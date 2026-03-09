@@ -26,24 +26,7 @@
 *   **Arka Plan İşlemleri:** AlarmManager & WorkManager
 *   **UI Bileşenleri:** Material Components, Splash Screen API, Lottie (Opsiyonel)
 
-## 📦 Kurulum
-
-Projeyi yerel makinenizde çalıştırmak için şu adımları izleyin:
-
-1.  Depoyu klonlayın:
-    ```bash
-    git clone https://github.com/kullanici_adi/uxtest.git
-    ```
-2.  Android Studio'yu açın.
-3.  "Open an Existing Project" seçeneği ile proje dizinini seçin.
-4.  Gradle senkronizasyonunun tamamlanmasını bekleyin.
-5.  Uygulamayı bir emülatör veya fiziksel cihazda çalıştırın.
-
 ## 👨‍💻 Geliştirici
 
 **Kaan Dönmez**
 *   [LinkedIn](https://www.linkedin.com/in/akaandonmez/)
-
-## 📄 Lisans
-
-Bu proje kişisel gelişim ve eğitim amaçlı oluşturulmuştur.
