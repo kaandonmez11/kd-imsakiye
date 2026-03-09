@@ -7,11 +7,9 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.media.AudioAttributes
-import android.net.Uri
-import android.os.Build
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.kdgames.imsakiye.MainActivity
+import androidx.core.net.toUri
 
 class NotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
@@ -31,10 +29,8 @@ class NotificationReceiver : BroadcastReceiver() {
 
         val channelId = "ramadan_channel_$soundName"
 
-        val soundUri =
-            Uri.parse("android.resource://${applicationContext.packageName}/raw/$soundName")
+        val soundUri = "android.resource://${applicationContext.packageName}/raw/$soundName".toUri()
 
-        // 📌 Activity açacak intent
         val intent = Intent(applicationContext, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
         }
@@ -46,24 +42,21 @@ class NotificationReceiver : BroadcastReceiver() {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val audioAttributes = AudioAttributes.Builder()
+            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+            .build()
 
-            val audioAttributes = AudioAttributes.Builder()
-                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                .setUsage(AudioAttributes.USAGE_NOTIFICATION)
-                .build()
-
-            val channel = NotificationChannel(
-                channelId,
-                "İbadet Hatırlatıcıları",
-                NotificationManager.IMPORTANCE_HIGH
-            ).apply {
-                description = "Namaz ve vakit hatırlatıcıları"
-                setSound(soundUri, audioAttributes)
-            }
-
-            notificationManager.createNotificationChannel(channel)
+        val channel = NotificationChannel(
+            channelId,
+            "Worship Reminders",
+            NotificationManager.IMPORTANCE_HIGH
+        ).apply {
+            description = "Prayer and time reminders"
+            setSound(soundUri, audioAttributes)
         }
+
+        notificationManager.createNotificationChannel(channel)
 
         val builder = NotificationCompat.Builder(applicationContext, channelId)
             .setSmallIcon(com.kdgames.imsakiye.R.drawable.notification_logo)
@@ -71,7 +64,7 @@ class NotificationReceiver : BroadcastReceiver() {
             .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
-            .setContentIntent(pendingIntent) // 🔥 KRİTİK SATIR
+            .setContentIntent(pendingIntent)
             .setSound(soundUri)
 
         notificationManager.notify(System.currentTimeMillis().toInt(), builder.build())

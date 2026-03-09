@@ -1,5 +1,6 @@
 package com.kdgames.imsakiye
 
+import android.annotation.SuppressLint
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -10,6 +11,7 @@ class CityManager private constructor(private val context: Context) {
     private var cityCache: List<CityById>? = null
 
     companion object {
+        @SuppressLint("StaticFieldLeak")
         @Volatile
         private var instance: CityManager? = null
 
@@ -34,6 +36,6 @@ class CityManager private constructor(private val context: Context) {
     fun getCityId(city: String) : String? {
         return loadCities().find {
             it.name.equals(city, ignoreCase = true)
-        }?._id
+        }?.id
     }
 }

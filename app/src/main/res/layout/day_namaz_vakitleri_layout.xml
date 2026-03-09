@@ -151,7 +151,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/dun_pt_hijri_date_d"
+                        android:id="@+id/dun_pt_hijri_d"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginStart="16dp"
@@ -423,7 +423,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/bugun_pt_hijri_date_d"
+                        android:id="@+id/bugun_pt_hijri_d"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginStart="16dp"
@@ -692,7 +692,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/yarin_pt_hijri_date_d"
+                        android:id="@+id/yarin_pt_hijri_d"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginStart="16dp"
@@ -960,7 +960,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/yarin_1_pt_hijri_date_d"
+                        android:id="@+id/yarin_1_pt_hijri_d"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginStart="16dp"
@@ -1228,7 +1228,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/yarin_2_pt_hijri_date_d"
+                        android:id="@+id/yarin_2_pt_hijri_d"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginStart="16dp"

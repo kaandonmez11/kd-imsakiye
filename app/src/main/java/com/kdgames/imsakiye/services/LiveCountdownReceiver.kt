@@ -11,10 +11,9 @@ class LiveCountdownReceiver : BroadcastReceiver() {
 
         val serviceIntent = Intent(context, LiveNotificationService::class.java).apply {
             putExtra("title", intent.getStringExtra("title"))
-            // Hata düzeltildi: targetMillis
             putExtra("targetMillis", intent.getLongExtra("targetMillis", 0L))
         }
-        Log.d("TEST_LOG", "Receiver tetiklendi")
+        Log.d("TEST_LOG", "Receiver triggered")
         ContextCompat.startForegroundService(context, serviceIntent)
     }
 }

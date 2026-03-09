@@ -1,5 +1,6 @@
 package com.kdgames.imsakiye.services
 
+import android.annotation.SuppressLint
 import android.app.*
 import android.content.Intent
 import android.os.Build
@@ -15,8 +16,8 @@ class LiveNotificationService : Service() {
     private var countDownTimer: CountDownTimer? = null
     private lateinit var notificationManager: NotificationManager
 
-    private val CHANNEL_ID = "live_countdown_channel"
-    private val NOTIFICATION_ID = 1001
+    private val channelId = "live_countdown_channel"
+    private val notificationId = 1001
 
     override fun onCreate() {
         super.onCreate()
@@ -25,14 +26,14 @@ class LiveNotificationService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        Log.d("TEST_LOG", "Service basladi")
+        Log.d("TEST_LOG", "Service started")
         val title = intent?.getStringExtra("title") ?: "Geri Sayım"
         val targetMillis = intent?.getLongExtra("targetMillis", 0L) ?: 0L
 
         val notification = createNotificationBuilder(title, "Hesaplanıyor...", 0, 0)
             .build()
 
-        startForeground(NOTIFICATION_ID, notification)
+        startForeground(notificationId, notification)
 
         if (targetMillis > 0) {
             val remaining = targetMillis - System.currentTimeMillis()
@@ -60,7 +61,7 @@ class LiveNotificationService : Service() {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+        val builder = NotificationCompat.Builder(this, channelId)
             .setContentTitle(title)
             .setContentText(contentText)
             .setSmallIcon(R.drawable.notification_logo)
@@ -76,14 +77,12 @@ class LiveNotificationService : Service() {
 
         if (Build.VERSION.SDK_INT >= 35) {
             builder.setRequestPromotedOngoing(true)
-            
-            // Durum çubuğunda (chip) görünecek kısa metin
+
             val minutes = progress / 60
             val seconds = progress % 60
             val chipText = if (minutes > 0) "${minutes}dk" else "${seconds}sn"
             builder.setShortCriticalText(chipText)
         } else {
-            // Eski sürümlerde veya kütüphane desteği yoksa extra olarak ekleyelim
             builder.addExtras(android.os.Bundle().apply {
                 putBoolean("android.requestPromotedOngoing", true)
             })
@@ -97,6 +96,7 @@ class LiveNotificationService : Service() {
         val maxSeconds = (totalMillis / 1000).toInt()
 
         countDownTimer = object : CountDownTimer(totalMillis, 1000) {
+            @SuppressLint("DefaultLocale")
             override fun onTick(millisUntilFinished: Long) {
                 val secondsRemaining = (millisUntilFinished / 1000).toInt()
                 val minutes = secondsRemaining / 60
@@ -112,7 +112,7 @@ class LiveNotificationService : Service() {
                 .setOnlyAlertOnce(true)
                 .build()
 
-                notificationManager.notify(NOTIFICATION_ID, updatedNotification)
+                notificationManager.notify(notificationId, updatedNotification)
             }
 
             override fun onFinish() {
@@ -123,17 +123,15 @@ class LiveNotificationService : Service() {
     }
 
     private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                CHANNEL_ID,
-                "Canlı Geri Sayım",
-                NotificationManager.IMPORTANCE_HIGH
-            ).apply {
-                description = "İftar ve Sahur geri sayım bildirimi"
-                lockscreenVisibility = Notification.VISIBILITY_PUBLIC
-            }
-            notificationManager.createNotificationChannel(channel)
+        val channel = NotificationChannel(
+            channelId,
+            "Canlı Geri Sayım",
+            NotificationManager.IMPORTANCE_HIGH
+        ).apply {
+            description = "İftar ve Sahur geri sayım bildirimi"
+            lockscreenVisibility = Notification.VISIBILITY_PUBLIC
         }
+        notificationManager.createNotificationChannel(channel)
     }
 
     override fun onBind(intent: Intent?): IBinder? = null

@@ -10,15 +10,12 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.location.Geocoder
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.kdgames.imsakiye.data.DayData
-import com.kdgames.imsakiye.services.PrayerApiService
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,6 +25,7 @@ import java.util.*
 import android.os.CountDownTimer
 import android.transition.Fade
 import android.transition.TransitionManager
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnticipateInterpolator
@@ -37,12 +35,10 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.annotation.RequiresPermission
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.textfield.TextInputLayout
 import com.kdgames.imsakiye.data.PrayTimeData
@@ -58,7 +54,9 @@ import java.time.LocalTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
+import androidx.core.net.toUri
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     lateinit var cachedDataProp: List<PrayTimeData>
@@ -160,16 +158,21 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.main_root)
 
-        val root = findViewById<View>(R.id.mainRoot);
+        val root = findViewById<View>(R.id.mainRoot)
         root.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                v.performClick()
+            }
+
             currentFocus?.clearFocus()
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(v.windowToken, 0)
+
             false
         }
 
 
-        currentPanel = findViewById(R.id.loadingPage);
+        currentPanel = findViewById(R.id.loadingPage)
 
         setSplashScreen(splashScreen)
 
@@ -181,24 +184,14 @@ class MainActivity : AppCompatActivity() {
 
             val dataManager = DataManager.getInstance(this@MainActivity)
 
-            val (dm_useLocation, dm_city) = dataManager.getLocationUsingData()
+            val (dmUseLocation, dmCity) = dataManager.getLocationUsingData()
 
-            useLocation = dm_useLocation
+            useLocation = dmUseLocation
 
-            if(useLocation)
-            {
-                city = getCity()
-            }
-            else
-            {
-                if(dm_city == null)
-                {
-                    city = ""
-                }
-                else
-                {
-                    city = dm_city
-                }
+            city = if(useLocation) {
+                getCity()
+            } else {
+                dmCity ?: ""
             }
 
             if (city.isEmpty()) {
@@ -208,9 +201,9 @@ class MainActivity : AppCompatActivity() {
             reminderHours = dataManager.getReminderHours()
             countdownMinutes = dataManager.getCountdownMinutes()
 
-            val year = Calendar.YEAR
 
-            var cachedData = dataManager.getAnnualData(city);
+            var cachedData = dataManager.getAnnualData(city)
+
 
             if(cachedData == null)
             {
@@ -220,11 +213,24 @@ class MainActivity : AppCompatActivity() {
                     dataManager.saveAnnualData(cachedData, city)
                 }
             }
+            else
+            {
+                val year = Calendar.YEAR
 
+                val currentDayDate = LocalDate.parse(cachedData[0].date, DateTimeFormatter.ISO_DATE_TIME)
+                if(year > currentDayDate.year)
+                {
+                    cachedData = fetchFullYearTimings(city)
+
+                    if(cachedData.isNotEmpty()){
+                        dataManager.saveAnnualData(cachedData, city)
+                    }
+                }
+            }
             cachedDataProp = cachedData
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 101)
+                requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 101)
             }
 
             scheduleRamadanNotifications(this@MainActivity, cachedDataProp)
@@ -253,12 +259,12 @@ class MainActivity : AppCompatActivity() {
             .toEpochMilli()
 
         if (triggerMillis <= System.currentTimeMillis()) {
-            Log.d("TEST_LOG", "trigger milis gecmis")
+            Log.d("TEST_LOG", "trigger millis passed")
             return
         }
 
         val alarmManager =
-            context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            context.getSystemService(ALARM_SERVICE) as AlarmManager
 
         val intent = Intent(context, LiveCountdownReceiver::class.java).apply {
             putExtra("title", title)
@@ -278,30 +284,18 @@ class MainActivity : AppCompatActivity() {
 
         try {
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-
-                if (alarmManager.canScheduleExactAlarms()) {
-                    alarmManager.setExactAndAllowWhileIdle(
-                        AlarmManager.RTC_WAKEUP,
-                        triggerMillis,
-                        pendingIntent
-                    )
-                } else {
-                    // Kullanıcı izin vermemiş
-                    // Burada kullanıcıyı ayarlara yönlendirebilirsin
-                    val permissionIntent = Intent(
-                        android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
-                    )
-                    permissionIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                    context.startActivity(permissionIntent)
-                }
-
-            } else {
+            if (alarmManager.canScheduleExactAlarms()) {
                 alarmManager.setExactAndAllowWhileIdle(
                     AlarmManager.RTC_WAKEUP,
                     triggerMillis,
                     pendingIntent
                 )
+            } else {
+                val permissionIntent = Intent(
+                    android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
+                )
+                permissionIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                context.startActivity(permissionIntent)
             }
         } catch (e: SecurityException) {
             e.printStackTrace()
@@ -315,7 +309,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun cancelAllAlarms(context: Context) {
-        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
         val dataManager = DataManager.getInstance(context)
         val set = dataManager.getAlarmCodes()
 
@@ -336,8 +330,8 @@ class MainActivity : AppCompatActivity() {
 
     fun checkDataAndOpenPanel()
     {
-        var days = getInterestDays(cachedDataProp, 8 )
-        var today = days[1]
+        val days = getInterestDays(cachedDataProp, 8 )
+        val today = days[1]
 
         if(checkTimeStatus(today.times.imsak))
         {
@@ -363,14 +357,12 @@ class MainActivity : AppCompatActivity() {
         cancelAllAlarms(this@MainActivity)
 
         val now = LocalDateTime.now()
-        val today = LocalDate.now()
-        val currentYear = today.year
 
         allYearData.forEach { day ->
-            val currentDayDate = LocalDate.parse(day.date, DateTimeFormatter.ISO_DATE_TIME);
+            val currentDayDate = LocalDate.parse(day.date, DateTimeFormatter.ISO_DATE_TIME)
 
-            // Sadece Ramazan ayı (Hicri 9. ay)
-            if (day.hijri_date.month == 9) {
+            // Only Ramadan month (Hijri 9th month)
+            if (day.hijri.month == 9) {
 
                 val sahurTime = LocalTime.parse(day.times.imsak)
                 val sahurDateTime = LocalDateTime.of(currentDayDate, sahurTime)
@@ -378,30 +370,30 @@ class MainActivity : AppCompatActivity() {
                 val iftarTime = LocalTime.parse(day.times.aksam)
                 val iftarDateTime = LocalDateTime.of(currentDayDate, iftarTime)
 
-                // --- SAHUR PLANLAMALARI ---
-                // 1 Saat Kala (Normal Bildirim)
+                // --- SAHUR SCHEDULING ---
+                // 1 Hour Before (Normal Notification)
                 if (sahurDateTime.minusHours(reminderHours).isAfter(now)) {
                     planTask(context, currentDayDate, sahurTime.toString(), "Sahur Vakti", "İmsak vaktine az kaldı.", "SAHUR_1H_${currentDayDate.dayOfMonth}_${currentDayDate.monthValue}", reminderHours, "faded_davul")
                 }
-                // 5 Dakika Kala (Canlı Geri Sayım)
+                // 5 Minutes Before (Live Countdown)
                 if (sahurDateTime.minusMinutes(countdownMinutes).isAfter(now)) {
                     planLiveTask(context, currentDayDate, sahurTime.toString(), "İmsak Geri Sayım", currentDayDate.dayOfMonth * 100 + currentDayDate.monthValue, countdownMinutes)
                 }
-                // Tam Vakit (Normal Bildirim)
+                // At Exact Time (Normal Notification)
                 if (sahurDateTime.isAfter(now)) {
                     planTask(context, currentDayDate, sahurTime.toString(), "İmsak Attı", "Oruç başladı.", "SAHUR_FULL_${currentDayDate.dayOfMonth}_${currentDayDate.monthValue}", 0, "ezan")
                 }
 
-                // --- İFTAR PLANLAMALARI ---
-                // 1 Saat Kala (Normal Bildirim)
+                // --- IFTAR SCHEDULING ---
+                // 1 Hour Before (Normal Notification)
                 if (iftarDateTime.minusHours(reminderHours).isAfter(now)) {
                     planTask(context, currentDayDate, iftarTime.toString(), "İftar Vaktine Az Kaldı", "Hazırlıklar tamam mı?", "IFTAR_1H_${currentDayDate.dayOfMonth}_${currentDayDate.monthValue}", reminderHours, "")
                 }
-                // 5 Dakika Kala (Canlı Geri Sayım)
+                // 5 Minutes Before (Live Countdown)
                 if (iftarDateTime.minusMinutes(countdownMinutes).isAfter(now)) {
                     planLiveTask(context, currentDayDate, iftarTime.toString(), "İftar Geri Sayım", currentDayDate.dayOfMonth * 10000 + currentDayDate.monthValue, countdownMinutes)
                 }
-                // Tam Vakit (Normal Bildirim)
+                // At Exact Time (Normal Notification)
                 if (iftarDateTime.isAfter(now)) {
                     planTask(context, currentDayDate, iftarTime.toString(), "İftar Vakti", "Afiyet olsun.", "IFTAR_FULL_${currentDayDate.dayOfMonth}_${currentDayDate.monthValue}", 0, "ezan_with_top")
                 }
@@ -420,9 +412,8 @@ class MainActivity : AppCompatActivity() {
 
         if (triggerMillis <= System.currentTimeMillis()) return
 
-        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
 
-        // NotificationReceiver adında bir BroadcastReceiver oluşturduğunuzu varsayıyorum
         val intent = Intent(context, NotificationReceiver::class.java).apply {
             putExtra("title", title)
             putExtra("message", message)
@@ -431,20 +422,15 @@ class MainActivity : AppCompatActivity() {
 
         val pendingIntent = PendingIntent.getBroadcast(
             context,
-            uniqueTag.hashCode(), // Benzersiz bir ID
+            uniqueTag.hashCode(), // Unique ID
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (alarmManager.canScheduleExactAlarms()) {
-                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerMillis, pendingIntent)
-            } else {
-                // Tam vaktinde gelmesi için izin istenmeli veya setAndAllowWhileIdle kullanılmalı
-                alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerMillis, pendingIntent)
-            }
-        } else {
+        if (alarmManager.canScheduleExactAlarms()) {
             alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerMillis, pendingIntent)
+        } else {
+            alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerMillis, pendingIntent)
         }
 
         saveRequestCode(context, uniqueTag.hashCode())
@@ -452,7 +438,7 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission")
     private suspend fun getCity(): String {
-        return withTimeoutOrNull(15000L) { // 15.000 milisaniye = 15 saniye
+        return withTimeoutOrNull(15000L) { // 15.000 milliseconds = 15 seconds
             try {
                 if (!hasLocationPermission()) return@withTimeoutOrNull ""
 
@@ -467,9 +453,10 @@ class MainActivity : AppCompatActivity() {
                     ""
                 }
             } catch (e: Exception) {
+                Log.e("KD Imsakiye", "Error while fetching city!  :  " + e.message)
                 ""
             }
-        } ?: "" // Eğer 15 sn dolarsa null döner, biz onu boş string'e çeviriyoruz
+        } ?: "" // If 15s timeout reached, returns null, converted to empty string
     }
 
     private fun hasLocationPermission(): Boolean {
@@ -488,9 +475,8 @@ class MainActivity : AppCompatActivity() {
     fun setSplashScreen(splashScreen: SplashScreen){
         splashScreen.setOnExitAnimationListener { splashScreenView ->
 
-            // iconView getterı NPE fırlatabiliyor, try-catch zorunlu
             try {
-                splashScreenView.iconView?.let { icon ->
+                splashScreenView.iconView.let { icon ->
                     val scaleX = ObjectAnimator.ofFloat(icon, View.SCALE_X, 1f, 2f)
                     val scaleY = ObjectAnimator.ofFloat(icon, View.SCALE_Y, 1f, 2f)
                     scaleX.duration = 600L
@@ -498,8 +484,7 @@ class MainActivity : AppCompatActivity() {
                     scaleX.start()
                     scaleY.start()
                 }
-            } catch (e: NullPointerException) {
-                // iconView mevcut değil, animasyonu atla
+            } catch (_: NullPointerException) {
             }
 
             val alpha = ObjectAnimator.ofFloat(splashScreenView.view, View.ALPHA, 1f, 0f)
@@ -531,23 +516,24 @@ class MainActivity : AppCompatActivity() {
             set(Calendar.MILLISECOND, 0)
         }
 
-        // 2. Eğer hedef saat şu andan küçükse, otomatik olarak yarına kur
+        // If target time is before now, automatically set for tomorrow
         if (targetCalendar.before(now)) {
             targetCalendar.add(Calendar.DAY_OF_YEAR, 1)
         }
 
         val remainingMillis = targetCalendar.timeInMillis - now.timeInMillis
 
-        // 3. Geri sayımı başlat
+        // Start countdown
         countdownTimer = object : CountDownTimer(remainingMillis, 1000)
         {
+            @SuppressLint("DefaultLocale")
             override fun onTick(millisUntilFinished: Long) {
                 val h = (millisUntilFinished / (1000 * 60 * 60))
                 val m = (millisUntilFinished / (1000 * 60)) % 60
                 val s = (millisUntilFinished / 1000) % 60
 
                 val formattedTime = String.format("%02d:%02d:%02d", h, m, s)
-                onTickUpdate(formattedTime) // UI'ı güncelleyen callback
+                onTickUpdate(formattedTime) // UI updating callback
             }
 
             override fun onFinish() {
@@ -557,12 +543,13 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     fun loadNightMode(dayList: List<PrayTimeData>, countdownTime: String, city: String)
     {
         val panel = findViewById<View>(R.id.nightImsakiyePage)
         showPanel(panel, 1000)
 
-        findViewById<TextView>(R.id.city_name_text_night).text = city;
+        findViewById<TextView>(R.id.city_name_text_night).text = city
 
 
         if(!useLocation || !hasLocationPermission()){
@@ -576,62 +563,56 @@ class MainActivity : AppCompatActivity() {
         {
             val currentDayDate = LocalDate.parse(day.date, DateTimeFormatter.ISO_DATE_TIME)
 
-            if(index == 0)
-            {
-                findViewById<TextView>(R.id.dun_day_index_night).text = day.hijri_date.day.toString()
-                findViewById<TextView>(R.id.dun_iftar_vakti_night).text = day.times.aksam
-                findViewById<TextView>(R.id.dun_sahur_vakti_night).text = day.times.imsak
-            }
-            else if (index == 1)
-            {
-                findViewById<TextView>(R.id.regular_date_text_night).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.month.value) + " " + currentDayDate.year.toString()
-                findViewById<TextView>(R.id.ramazan_date_text_night).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
-                findViewById<TextView>(R.id.day_text_night).text = getTurkishWeekday(currentDayDate.dayOfWeek);
-                // list items
-                findViewById<TextView>(R.id.bugun_day_index_night).text = day.hijri_date.day.toString()
-                findViewById<TextView>(R.id.bugun_iftar_vakti_night).text = day.times.aksam
-                findViewById<TextView>(R.id.bugun_sahur_vakti_night).text = day.times.imsak
-            }
-            else if (index == 2)
-            {
-                findViewById<TextView>(R.id.yarin_day_index_night).text = day.hijri_date.day.toString();
-                findViewById<TextView>(R.id.yarin_iftar_vakti_night).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_sahur_vakti_night).text = day.times.imsak
-            }
-            else if (index == 3)
-            {
-                findViewById<TextView>(R.id.yarin_1_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                findViewById<TextView>(R.id.yarin_1_day_index_night).text = day.hijri_date.day.toString();
-                findViewById<TextView>(R.id.yarin_1_iftar_vakti_night).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_1_sahur_vakti_night).text = day.times.imsak
-            }
-            else if (index == 4)
-            {
-                findViewById<TextView>(R.id.yarin_2_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                findViewById<TextView>(R.id.yarin_2_day_index_night).text = day.hijri_date.day.toString();
-                findViewById<TextView>(R.id.yarin_2_iftar_vakti_night).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_2_sahur_vakti_night).text = day.times.imsak
-            }
-            else if (index == 5)
-            {
-                findViewById<TextView>(R.id.yarin_3_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                findViewById<TextView>(R.id.yarin_3_day_index_night).text = day.hijri_date.day.toString();
-                findViewById<TextView>(R.id.yarin_3_iftar_vakti_night).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_3_sahur_vakti_night).text = day.times.imsak
-            }
-            else if (index == 6)
-            {
-                findViewById<TextView>(R.id.yarin_4_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                findViewById<TextView>(R.id.yarin_4_day_index_night).text = day.hijri_date.day.toString();
-                findViewById<TextView>(R.id.yarin_4_iftar_vakti_night).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_4_sahur_vakti_night).text = day.times.imsak
-            }
-            else if(index == 7)
-            {
-                findViewById<TextView>(R.id.yarin_5_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                findViewById<TextView>(R.id.yarin_5_day_index_night).text = day.hijri_date.day.toString();
-                findViewById<TextView>(R.id.yarin_5_iftar_vakti_night).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_5_sahur_vakti_night).text = day.times.imsak
+            when (index) {
+                0 -> {
+                    findViewById<TextView>(R.id.dun_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.dun_iftar_vakti_night).text = day.times.aksam
+                    findViewById<TextView>(R.id.dun_sahur_vakti_night).text = day.times.imsak
+                }
+                1 -> {
+                    findViewById<TextView>(R.id.regular_date_text_night).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.month.value) + " " + currentDayDate.year.toString()
+                    findViewById<TextView>(R.id.ramazan_date_text_night).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.day_text_night).text = getTurkishWeekday(currentDayDate.dayOfWeek)
+                    // list items
+                    findViewById<TextView>(R.id.bugun_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.bugun_iftar_vakti_night).text = day.times.aksam
+                    findViewById<TextView>(R.id.bugun_sahur_vakti_night).text = day.times.imsak
+                }
+                2 -> {
+                    findViewById<TextView>(R.id.yarin_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_iftar_vakti_night).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_sahur_vakti_night).text = day.times.imsak
+                }
+                3 -> {
+                    findViewById<TextView>(R.id.yarin_1_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
+                    findViewById<TextView>(R.id.yarin_1_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_1_iftar_vakti_night).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_1_sahur_vakti_night).text = day.times.imsak
+                }
+                4 -> {
+                    findViewById<TextView>(R.id.yarin_2_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
+                    findViewById<TextView>(R.id.yarin_2_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_2_iftar_vakti_night).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_2_sahur_vakti_night).text = day.times.imsak
+                }
+                5 -> {
+                    findViewById<TextView>(R.id.yarin_3_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
+                    findViewById<TextView>(R.id.yarin_3_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_3_iftar_vakti_night).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_3_sahur_vakti_night).text = day.times.imsak
+                }
+                6 -> {
+                    findViewById<TextView>(R.id.yarin_4_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
+                    findViewById<TextView>(R.id.yarin_4_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_4_iftar_vakti_night).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_4_sahur_vakti_night).text = day.times.imsak
+                }
+                7 -> {
+                    findViewById<TextView>(R.id.yarin_5_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
+                    findViewById<TextView>(R.id.yarin_5_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_5_iftar_vakti_night).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_5_sahur_vakti_night).text = day.times.imsak
+                }
             }
         }
 
@@ -646,12 +627,13 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.settings_button_night).setOnClickListener { loadSettingsNight()}
     }
 
+    @SuppressLint("SetTextI18n")
     fun loadDayMode(dayList: List<PrayTimeData>, countdownTime: String, city: String)
     {
         val panel = findViewById<View>(R.id.dayImsakiyePage)
         showPanel(panel, 1000)
 
-        findViewById<TextView>(R.id.city_name_text_day).text = city;
+        findViewById<TextView>(R.id.city_name_text_day).text = city
 
         if(!useLocation || !hasLocationPermission()){
             findViewById<View>(R.id.location_set_icon_day).backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.light))
@@ -664,62 +646,56 @@ class MainActivity : AppCompatActivity() {
         for ((index, day) in dayList.withIndex())
         {
             val currentDayDate = LocalDate.parse(day.date, DateTimeFormatter.ISO_DATE_TIME)
-            if(index == 0)
-            {
-                findViewById<TextView>(R.id.dun_day_index_day).text = day.hijri_date.day.toString()
-                findViewById<TextView>(R.id.dun_iftar_vakti_day).text = day.times.aksam
-                findViewById<TextView>(R.id.dun_sahur_vakti_day).text = day.times.imsak
-            }
-            else if (index == 1)
-            {
-                findViewById<TextView>(R.id.regular_date_text_day).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                findViewById<TextView>(R.id.ramazan_date_text_day).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
-                findViewById<TextView>(R.id.day_text_day).text = getTurkishWeekday(currentDayDate.dayOfWeek);
-                // list items
-                findViewById<TextView>(R.id.bugun_day_index_day).text = day.hijri_date.day.toString();
-                findViewById<TextView>(R.id.bugun_iftar_vakti_day).text = day.times.aksam
-                findViewById<TextView>(R.id.bugun_sahur_vakti_day).text = day.times.imsak
-            }
-            else if (index == 2)
-            {
-                findViewById<TextView>(R.id.yarin_day_index_day).text = day.hijri_date.day.toString();
-                findViewById<TextView>(R.id.yarin_iftar_vakti_day).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_sahur_vakti_day).text = day.times.imsak
-            }
-            else if (index == 3)
-            {
-                findViewById<TextView>(R.id.yarin_1_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                findViewById<TextView>(R.id.yarin_1_day_index_day).text = day.hijri_date.day.toString();
-                findViewById<TextView>(R.id.yarin_1_iftar_vakti_day).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_1_sahur_vakti_day).text = day.times.imsak
-            }
-            else if (index == 4)
-            {
-                findViewById<TextView>(R.id.yarin_2_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                findViewById<TextView>(R.id.yarin_2_day_index_day).text = day.hijri_date.day.toString()
-                findViewById<TextView>(R.id.yarin_2_iftar_vakti_day).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_2_sahur_vakti_day).text = day.times.imsak
-            }
-            else if (index == 5)
-            {
-                findViewById<TextView>(R.id.yarin_3_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                findViewById<TextView>(R.id.yarin_3_day_index_day).text = day.hijri_date.day.toString()
-                findViewById<TextView>(R.id.yarin_3_iftar_vakti_day).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_3_sahur_vakti_day).text = day.times.imsak
-            }
-            else if (index == 6)
-            {
-                findViewById<TextView>(R.id.yarin_4_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                findViewById<TextView>(R.id.yarin_4_day_index_day).text = day.hijri_date.day.toString()
-                findViewById<TextView>(R.id.yarin_4_iftar_vakti_day).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_4_sahur_vakti_day).text = day.times.imsak
-            }
-            else if(index == 7)
-            {
-                findViewById<TextView>(R.id.yarin_5_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                findViewById<TextView>(R.id.yarin_5_day_index_day).text = day.hijri_date.day.toString();
-                findViewById<TextView>(R.id.yarin_5_iftar_vakti_day).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_5_sahur_vakti_day).text = day.times.imsak
+            when (index) {
+                0 -> {
+                    findViewById<TextView>(R.id.dun_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.dun_iftar_vakti_day).text = day.times.aksam
+                    findViewById<TextView>(R.id.dun_sahur_vakti_day).text = day.times.imsak
+                }
+                1 -> {
+                    findViewById<TextView>(R.id.regular_date_text_day).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
+                    findViewById<TextView>(R.id.ramazan_date_text_day).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.day_text_day).text = getTurkishWeekday(currentDayDate.dayOfWeek)
+                    // list items
+                    findViewById<TextView>(R.id.bugun_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.bugun_iftar_vakti_day).text = day.times.aksam
+                    findViewById<TextView>(R.id.bugun_sahur_vakti_day).text = day.times.imsak
+                }
+                2 -> {
+                    findViewById<TextView>(R.id.yarin_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_iftar_vakti_day).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_sahur_vakti_day).text = day.times.imsak
+                }
+                3 -> {
+                    findViewById<TextView>(R.id.yarin_1_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
+                    findViewById<TextView>(R.id.yarin_1_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_1_iftar_vakti_day).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_1_sahur_vakti_day).text = day.times.imsak
+                }
+                4 -> {
+                    findViewById<TextView>(R.id.yarin_2_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
+                    findViewById<TextView>(R.id.yarin_2_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_2_iftar_vakti_day).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_2_sahur_vakti_day).text = day.times.imsak
+                }
+                5 -> {
+                    findViewById<TextView>(R.id.yarin_3_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
+                    findViewById<TextView>(R.id.yarin_3_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_3_iftar_vakti_day).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_3_sahur_vakti_day).text = day.times.imsak
+                }
+                6 -> {
+                    findViewById<TextView>(R.id.yarin_4_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
+                    findViewById<TextView>(R.id.yarin_4_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_4_iftar_vakti_day).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_4_sahur_vakti_day).text = day.times.imsak
+                }
+                7 -> {
+                    findViewById<TextView>(R.id.yarin_5_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
+                    findViewById<TextView>(R.id.yarin_5_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_5_iftar_vakti_day).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_5_sahur_vakti_day).text = day.times.imsak
+                }
             }
         }
 
@@ -759,19 +735,19 @@ class MainActivity : AppCompatActivity() {
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val m_city = parent.getItemAtPosition(position).toString()
-                if(m_city != city)
+                val mCity = parent.getItemAtPosition(position).toString()
+                if(mCity != city)
                 {
-                    dataManager.setLocationUsingData(false, m_city)
+                    dataManager.setLocationUsingData(false, mCity)
 
                     findViewById<View>(R.id.s_location_set_icon_night).backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this@MainActivity, R.color.dark))
-                    findViewById<TextView>(R.id.s_city_name_text_night).text = m_city
+                    findViewById<TextView>(R.id.s_city_name_text_night).text = mCity
 
                     lifecycleScope.launch {
 
-                        city = m_city
+                        city = mCity
 
-                        var cachedData = dataManager.getAnnualData(city);
+                        var cachedData = dataManager.getAnnualData(city)
 
                         if(cachedData == null)
                         {
@@ -845,12 +821,12 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.s_city_name_text_night).text = city
 
-        val editText_rem = findViewById<TextInputLayout>(R.id.n_reminder_text_input_layout).editText
-        editText_rem?.setText(reminderHours.toString(), TextView.BufferType.EDITABLE)
+        val editTextRem = findViewById<TextInputLayout>(R.id.n_reminder_text_input_layout).editText
+        editTextRem?.setText(reminderHours.toString(), TextView.BufferType.EDITABLE)
 
-        editText_rem?.setOnFocusChangeListener { _, hasFocus ->
+        editTextRem?.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                val value = editText_rem.text.toString()
+                val value = editTextRem.text.toString()
                 var hours = value.toLongOrNull() ?: 1L
 
                 if(hours > 23L){
@@ -860,9 +836,9 @@ class MainActivity : AppCompatActivity() {
                     hours = 1L
                 }
 
-                if(editText_rem.text.toString() != hours.toString()){
+                if(editTextRem.text.toString() != hours.toString()){
 
-                    editText_rem?.setText(hours.toString(), TextView.BufferType.EDITABLE)
+                    editTextRem.setText(hours.toString(), TextView.BufferType.EDITABLE)
                 }
 
                 if(hours != reminderHours){
@@ -874,12 +850,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val editText_cd = findViewById<TextInputLayout>(R.id.n_countdown_input).editText
-        editText_cd?.setText(countdownMinutes.toString(), TextView.BufferType.EDITABLE)
+        val editTextCd = findViewById<TextInputLayout>(R.id.n_countdown_input).editText
+        editTextCd?.setText(countdownMinutes.toString(), TextView.BufferType.EDITABLE)
 
-        editText_cd?.setOnFocusChangeListener { _, hasFocus ->
+        editTextCd?.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                val value = editText_cd.text.toString()
+                val value = editTextCd.text.toString()
                 var mins = value.toLongOrNull() ?: 1L
 
                 if(mins > 58L)
@@ -890,9 +866,9 @@ class MainActivity : AppCompatActivity() {
                     mins = 1L
                 }
 
-                if(editText_cd.text.toString() != mins.toString()){
+                if(editTextCd.text.toString() != mins.toString()){
 
-                    editText_cd?.setText(mins.toString(), TextView.BufferType.EDITABLE)
+                    editTextCd.setText(mins.toString(), TextView.BufferType.EDITABLE)
                 }
 
                 if(mins != countdownMinutes){
@@ -933,18 +909,18 @@ class MainActivity : AppCompatActivity() {
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val m_city = parent.getItemAtPosition(position).toString()
+                val mCity = parent.getItemAtPosition(position).toString()
 
-                if(m_city != city)
+                if(mCity != city)
                 {
-                    dataManager.setLocationUsingData(false, m_city)
+                    dataManager.setLocationUsingData(false, mCity)
 
                     findViewById<View>(R.id.s_location_set_icon_day).backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this@MainActivity, R.color.light))
-                    findViewById<TextView>(R.id.s_city_name_text_day).text = m_city
+                    findViewById<TextView>(R.id.s_city_name_text_day).text = mCity
 
                     lifecycleScope.launch {
 
-                        city = m_city
+                        city = mCity
 
                         var cachedData = dataManager.getAnnualData(city)
 
@@ -992,9 +968,8 @@ class MainActivity : AppCompatActivity() {
 
                 lifecycleScope.launch {
 
-                    var cachedData = dataManager.getAnnualData(city);
-                    val year = Calendar.YEAR
-
+                    var cachedData = dataManager.getAnnualData(city)
+                    
                     if(cachedData == null)
                     {
                         cachedData = fetchFullYearTimings(city)
@@ -1018,12 +993,12 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<TextView>(R.id.s_city_name_text_day).text = city
 
-        val editText_rem = findViewById<TextInputLayout>(R.id.d_reminder_text_input_layout).editText
-        editText_rem?.setText(reminderHours.toString(), TextView.BufferType.EDITABLE)
+        val editTextRem = findViewById<TextInputLayout>(R.id.d_reminder_text_input_layout).editText
+        editTextRem?.setText(reminderHours.toString(), TextView.BufferType.EDITABLE)
 
-        editText_rem?.setOnFocusChangeListener { _, hasFocus ->
+        editTextRem?.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                val value = editText_rem.text.toString()
+                val value = editTextRem.text.toString()
                 var hours = value.toLongOrNull() ?: 1L
 
                 if(hours > 23L){
@@ -1033,9 +1008,9 @@ class MainActivity : AppCompatActivity() {
                     hours = 1L
                 }
 
-                if(editText_rem.text.toString() != hours.toString()){
+                if(editTextRem.text.toString() != hours.toString()){
 
-                    editText_rem?.setText(hours.toString(), TextView.BufferType.EDITABLE)
+                    editTextRem.setText(hours.toString(), TextView.BufferType.EDITABLE)
                 }
 
                 if(hours != reminderHours){
@@ -1047,12 +1022,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val editText_cd = findViewById<TextInputLayout>(R.id.d_countdown_input).editText
-        editText_cd?.setText(countdownMinutes.toString(), TextView.BufferType.EDITABLE)
+        val editTextCd = findViewById<TextInputLayout>(R.id.d_countdown_input).editText
+        editTextCd?.setText(countdownMinutes.toString(), TextView.BufferType.EDITABLE)
 
-        editText_cd?.setOnFocusChangeListener { _, hasFocus ->
+        editTextCd?.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
-                val value = editText_cd.text.toString()
+                val value = editTextCd.text.toString()
                 var mins = value.toLongOrNull() ?: 1L
 
                 if(mins > 58L)
@@ -1063,9 +1038,9 @@ class MainActivity : AppCompatActivity() {
                     mins = 1L
                 }
 
-                if(editText_cd.text.toString() != mins.toString()){
+                if(editTextCd.text.toString() != mins.toString()){
 
-                    editText_cd?.setText(mins.toString(), TextView.BufferType.EDITABLE)
+                    editTextCd.setText(mins.toString(), TextView.BufferType.EDITABLE)
                 }
 
                 if(mins != countdownMinutes){
@@ -1085,7 +1060,7 @@ class MainActivity : AppCompatActivity() {
 
     suspend fun setLocationUseToSettings(){
 
-        city = getCity();
+        city = getCity()
 
         if (city.isEmpty()) {
             city = "İstanbul"
@@ -1095,13 +1070,14 @@ class MainActivity : AppCompatActivity() {
         dataManager.setLocationUsingData(true, city)
     }
 
+    @SuppressLint("SetTextI18n")
     fun loadNightPrayerTimes(dayList: List<PrayTimeData>, city: String){
 
         val panel = findViewById<View>(R.id.nightPrayPage)
         showPanel(panel, 1000)
 
 
-        findViewById<TextView>(R.id.pt_city_name_text_night).text = city;
+        findViewById<TextView>(R.id.pt_city_name_text_night).text = city
 
         if(!useLocation || !hasLocationPermission()){
             findViewById<View>(R.id.pt_location_set_icon_night).backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.dark))
@@ -1114,71 +1090,68 @@ class MainActivity : AppCompatActivity() {
         {
             val currentDayDate = LocalDate.parse(day.date, DateTimeFormatter.ISO_DATE_TIME)
 
-            if(index == 0)
-            {
-                findViewById<TextView>(R.id.dun_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                findViewById<TextView>(R.id.dun_pt_hijri_date_n).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
+            when (index) {
+                0 -> {
+                    findViewById<TextView>(R.id.dun_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
+                    findViewById<TextView>(R.id.dun_pt_hijri_n).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
 
-                findViewById<TextView>(R.id.dun_pt_imsak_time_n).text = day.times.imsak
-                findViewById<TextView>(R.id.dun_pt_gun_time_n).text = day.times.gunes
-                findViewById<TextView>(R.id.dun_pt_ogle_time_n).text = day.times.ogle
-                findViewById<TextView>(R.id.dun_pt_ikindi_time_n).text = day.times.ikindi
-                findViewById<TextView>(R.id.dun_pt_aksam_time_n).text = day.times.aksam
-                findViewById<TextView>(R.id.dun_pt_yatsi_time_n).text = day.times.yatsi
-                
-            }
-            else if (index == 1)
-            {
-                findViewById<TextView>(R.id.bugun_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                findViewById<TextView>(R.id.bugun_pt_hijri_date_n).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
+                    findViewById<TextView>(R.id.dun_pt_imsak_time_n).text = day.times.imsak
+                    findViewById<TextView>(R.id.dun_pt_gun_time_n).text = day.times.gunes
+                    findViewById<TextView>(R.id.dun_pt_ogle_time_n).text = day.times.ogle
+                    findViewById<TextView>(R.id.dun_pt_ikindi_time_n).text = day.times.ikindi
+                    findViewById<TextView>(R.id.dun_pt_aksam_time_n).text = day.times.aksam
+                    findViewById<TextView>(R.id.dun_pt_yatsi_time_n).text = day.times.yatsi
 
-                findViewById<TextView>(R.id.bugun_pt_imsak_time_n).text = day.times.imsak
-                findViewById<TextView>(R.id.bugun_pt_gun_time_n).text = day.times.gunes
-                findViewById<TextView>(R.id.bugun_pt_ogle_time_n).text = day.times.ogle
-                findViewById<TextView>(R.id.bugun_pt_ikindi_time_n).text = day.times.ikindi
-                findViewById<TextView>(R.id.bugun_pt_aksam_time_n).text = day.times.aksam
-                findViewById<TextView>(R.id.bugun_pt_yatsi_time_n).text = day.times.yatsi
+                }
+                1 -> {
+                    findViewById<TextView>(R.id.bugun_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
+                    findViewById<TextView>(R.id.bugun_pt_hijri_n).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
 
-            }
-            else if (index == 2)
-            {
-                findViewById<TextView>(R.id.yarin_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                findViewById<TextView>(R.id.yarin_pt_hijri_date_n).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
+                    findViewById<TextView>(R.id.bugun_pt_imsak_time_n).text = day.times.imsak
+                    findViewById<TextView>(R.id.bugun_pt_gun_time_n).text = day.times.gunes
+                    findViewById<TextView>(R.id.bugun_pt_ogle_time_n).text = day.times.ogle
+                    findViewById<TextView>(R.id.bugun_pt_ikindi_time_n).text = day.times.ikindi
+                    findViewById<TextView>(R.id.bugun_pt_aksam_time_n).text = day.times.aksam
+                    findViewById<TextView>(R.id.bugun_pt_yatsi_time_n).text = day.times.yatsi
 
-                findViewById<TextView>(R.id.yarin_pt_imsak_time_n).text = day.times.imsak
-                findViewById<TextView>(R.id.yarin_pt_gun_time_n).text = day.times.gunes
-                findViewById<TextView>(R.id.yarin_pt_ogle_time_n).text = day.times.ogle
-                findViewById<TextView>(R.id.yarin_pt_ikindi_time_n).text = day.times.ikindi
-                findViewById<TextView>(R.id.yarin_pt_aksam_time_n).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_pt_yatsi_time_n).text = day.times.yatsi
-            }
-            else if (index == 3)
-            {
-                findViewById<TextView>(R.id.yarin_1_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                findViewById<TextView>(R.id.yarin_1_pt_hijri_date_n).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
+                }
+                2 -> {
+                    findViewById<TextView>(R.id.yarin_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
+                    findViewById<TextView>(R.id.yarin_pt_hijri_n).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
 
-                findViewById<TextView>(R.id.yarin_1_pt_imsak_time_n).text = day.times.imsak
-                findViewById<TextView>(R.id.yarin_1_pt_gun_time_n).text = day.times.gunes
-                findViewById<TextView>(R.id.yarin_1_pt_ogle_time_n).text = day.times.ogle
-                findViewById<TextView>(R.id.yarin_1_pt_ikindi_time_n).text = day.times.ikindi
-                findViewById<TextView>(R.id.yarin_1_pt_aksam_time_n).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_1_pt_yatsi_time_n).text = day.times.yatsi
-                
-                findViewById<TextView>(R.id.yarin_1_pt_dun_header_n).text = getTurkishWeekday(currentDayDate.dayOfWeek);
-            }
-            else if (index == 4)
-            {
-                findViewById<TextView>(R.id.yarin_2_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                findViewById<TextView>(R.id.yarin_2_pt_hijri_date_n).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
+                    findViewById<TextView>(R.id.yarin_pt_imsak_time_n).text = day.times.imsak
+                    findViewById<TextView>(R.id.yarin_pt_gun_time_n).text = day.times.gunes
+                    findViewById<TextView>(R.id.yarin_pt_ogle_time_n).text = day.times.ogle
+                    findViewById<TextView>(R.id.yarin_pt_ikindi_time_n).text = day.times.ikindi
+                    findViewById<TextView>(R.id.yarin_pt_aksam_time_n).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_pt_yatsi_time_n).text = day.times.yatsi
+                }
+                3 -> {
+                    findViewById<TextView>(R.id.yarin_1_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
+                    findViewById<TextView>(R.id.yarin_1_pt_hijri_n).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
 
-                findViewById<TextView>(R.id.yarin_2_pt_imsak_time_n).text = day.times.imsak
-                findViewById<TextView>(R.id.yarin_2_pt_gun_time_n).text = day.times.gunes
-                findViewById<TextView>(R.id.yarin_2_pt_ogle_time_n).text = day.times.ogle
-                findViewById<TextView>(R.id.yarin_2_pt_ikindi_time_n).text = day.times.ikindi
-                findViewById<TextView>(R.id.yarin_2_pt_aksam_time_n).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_2_pt_yatsi_time_n).text = day.times.yatsi
-                
-                findViewById<TextView>(R.id.yarin_2_pt_dun_header_n).text = getTurkishWeekday(currentDayDate.dayOfWeek);
+                    findViewById<TextView>(R.id.yarin_1_pt_imsak_time_n).text = day.times.imsak
+                    findViewById<TextView>(R.id.yarin_1_pt_gun_time_n).text = day.times.gunes
+                    findViewById<TextView>(R.id.yarin_1_pt_ogle_time_n).text = day.times.ogle
+                    findViewById<TextView>(R.id.yarin_1_pt_ikindi_time_n).text = day.times.ikindi
+                    findViewById<TextView>(R.id.yarin_1_pt_aksam_time_n).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_1_pt_yatsi_time_n).text = day.times.yatsi
+
+                    findViewById<TextView>(R.id.yarin_1_pt_dun_header_n).text = getTurkishWeekday(currentDayDate.dayOfWeek)
+                }
+                4 -> {
+                    findViewById<TextView>(R.id.yarin_2_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
+                    findViewById<TextView>(R.id.yarin_2_pt_hijri_n).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+
+                    findViewById<TextView>(R.id.yarin_2_pt_imsak_time_n).text = day.times.imsak
+                    findViewById<TextView>(R.id.yarin_2_pt_gun_time_n).text = day.times.gunes
+                    findViewById<TextView>(R.id.yarin_2_pt_ogle_time_n).text = day.times.ogle
+                    findViewById<TextView>(R.id.yarin_2_pt_ikindi_time_n).text = day.times.ikindi
+                    findViewById<TextView>(R.id.yarin_2_pt_aksam_time_n).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_2_pt_yatsi_time_n).text = day.times.yatsi
+
+                    findViewById<TextView>(R.id.yarin_2_pt_dun_header_n).text = getTurkishWeekday(currentDayDate.dayOfWeek)
+                }
             }
         }
         
@@ -1189,13 +1162,14 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     fun loadDayPrayerTimes(dayList: List<PrayTimeData>, city: String){
 
         val panel = findViewById<View>(R.id.dayPrayPage)
         showPanel(panel, 1000)
 
 
-        findViewById<TextView>(R.id.pt_city_name_text_day).text = city;
+        findViewById<TextView>(R.id.pt_city_name_text_day).text = city
 
         if(!useLocation ||!hasLocationPermission()){
             findViewById<View>(R.id.pt_location_set_icon_night).backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.dark))
@@ -1205,71 +1179,68 @@ class MainActivity : AppCompatActivity() {
         {
             val currentDayDate = LocalDate.parse(day.date, DateTimeFormatter.ISO_DATE_TIME)
 
-            if(index == 0)
-            {
-                findViewById<TextView>(R.id.dun_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                findViewById<TextView>(R.id.dun_pt_hijri_date_d).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
+            when (index) {
+                0 -> {
+                    findViewById<TextView>(R.id.dun_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
+                    findViewById<TextView>(R.id.dun_pt_hijri_d).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
 
-                findViewById<TextView>(R.id.dun_pt_imsak_time_d).text = day.times.imsak
-                findViewById<TextView>(R.id.dun_pt_gun_time_d).text = day.times.gunes
-                findViewById<TextView>(R.id.dun_pt_ogle_time_d).text = day.times.ogle
-                findViewById<TextView>(R.id.dun_pt_ikindi_time_d).text = day.times.ikindi
-                findViewById<TextView>(R.id.dun_pt_aksam_time_d).text = day.times.aksam
-                findViewById<TextView>(R.id.dun_pt_yatsi_time_d).text = day.times.yatsi
+                    findViewById<TextView>(R.id.dun_pt_imsak_time_d).text = day.times.imsak
+                    findViewById<TextView>(R.id.dun_pt_gun_time_d).text = day.times.gunes
+                    findViewById<TextView>(R.id.dun_pt_ogle_time_d).text = day.times.ogle
+                    findViewById<TextView>(R.id.dun_pt_ikindi_time_d).text = day.times.ikindi
+                    findViewById<TextView>(R.id.dun_pt_aksam_time_d).text = day.times.aksam
+                    findViewById<TextView>(R.id.dun_pt_yatsi_time_d).text = day.times.yatsi
 
-            }
-            else if (index == 1)
-            {
-                findViewById<TextView>(R.id.bugun_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                findViewById<TextView>(R.id.bugun_pt_hijri_date_d).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
+                }
+                1 -> {
+                    findViewById<TextView>(R.id.bugun_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
+                    findViewById<TextView>(R.id.bugun_pt_hijri_d).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
 
-                findViewById<TextView>(R.id.bugun_pt_imsak_time_d).text = day.times.imsak
-                findViewById<TextView>(R.id.bugun_pt_gun_time_d).text = day.times.gunes
-                findViewById<TextView>(R.id.bugun_pt_ogle_time_d).text = day.times.ogle
-                findViewById<TextView>(R.id.bugun_pt_ikindi_time_d).text = day.times.ikindi
-                findViewById<TextView>(R.id.bugun_pt_aksam_time_d).text = day.times.aksam
-                findViewById<TextView>(R.id.bugun_pt_yatsi_time_d).text = day.times.yatsi
+                    findViewById<TextView>(R.id.bugun_pt_imsak_time_d).text = day.times.imsak
+                    findViewById<TextView>(R.id.bugun_pt_gun_time_d).text = day.times.gunes
+                    findViewById<TextView>(R.id.bugun_pt_ogle_time_d).text = day.times.ogle
+                    findViewById<TextView>(R.id.bugun_pt_ikindi_time_d).text = day.times.ikindi
+                    findViewById<TextView>(R.id.bugun_pt_aksam_time_d).text = day.times.aksam
+                    findViewById<TextView>(R.id.bugun_pt_yatsi_time_d).text = day.times.yatsi
 
-            }
-            else if (index == 2)
-            {
-                findViewById<TextView>(R.id.yarin_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                findViewById<TextView>(R.id.yarin_pt_hijri_date_d).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
+                }
+                2 -> {
+                    findViewById<TextView>(R.id.yarin_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
+                    findViewById<TextView>(R.id.yarin_pt_hijri_d).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
 
-                findViewById<TextView>(R.id.yarin_pt_imsak_time_d).text = day.times.imsak
-                findViewById<TextView>(R.id.yarin_pt_gun_time_d).text = day.times.gunes
-                findViewById<TextView>(R.id.yarin_pt_ogle_time_d).text = day.times.ogle
-                findViewById<TextView>(R.id.yarin_pt_ikindi_time_d).text = day.times.ikindi
-                findViewById<TextView>(R.id.yarin_pt_aksam_time_d).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_pt_yatsi_time_d).text = day.times.yatsi
-            }
-            else if (index == 3)
-            {
-                findViewById<TextView>(R.id.yarin_1_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                findViewById<TextView>(R.id.yarin_1_pt_hijri_date_d).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
+                    findViewById<TextView>(R.id.yarin_pt_imsak_time_d).text = day.times.imsak
+                    findViewById<TextView>(R.id.yarin_pt_gun_time_d).text = day.times.gunes
+                    findViewById<TextView>(R.id.yarin_pt_ogle_time_d).text = day.times.ogle
+                    findViewById<TextView>(R.id.yarin_pt_ikindi_time_d).text = day.times.ikindi
+                    findViewById<TextView>(R.id.yarin_pt_aksam_time_d).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_pt_yatsi_time_d).text = day.times.yatsi
+                }
+                3 -> {
+                    findViewById<TextView>(R.id.yarin_1_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
+                    findViewById<TextView>(R.id.yarin_1_pt_hijri_d).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
 
-                findViewById<TextView>(R.id.yarin_1_pt_imsak_time_d).text = day.times.imsak
-                findViewById<TextView>(R.id.yarin_1_pt_gun_time_d).text = day.times.gunes
-                findViewById<TextView>(R.id.yarin_1_pt_ogle_time_d).text = day.times.ogle
-                findViewById<TextView>(R.id.yarin_1_pt_ikindi_time_d).text = day.times.ikindi
-                findViewById<TextView>(R.id.yarin_1_pt_aksam_time_d).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_1_pt_yatsi_time_d).text = day.times.yatsi
+                    findViewById<TextView>(R.id.yarin_1_pt_imsak_time_d).text = day.times.imsak
+                    findViewById<TextView>(R.id.yarin_1_pt_gun_time_d).text = day.times.gunes
+                    findViewById<TextView>(R.id.yarin_1_pt_ogle_time_d).text = day.times.ogle
+                    findViewById<TextView>(R.id.yarin_1_pt_ikindi_time_d).text = day.times.ikindi
+                    findViewById<TextView>(R.id.yarin_1_pt_aksam_time_d).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_1_pt_yatsi_time_d).text = day.times.yatsi
 
-                findViewById<TextView>(R.id.yarin_1_pt_dun_header_d).text = getTurkishWeekday(currentDayDate.dayOfMonth.toString());
-            }
-            else if (index == 4)
-            {
-                findViewById<TextView>(R.id.yarin_2_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                findViewById<TextView>(R.id.yarin_2_pt_hijri_date_d).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
+                    findViewById<TextView>(R.id.yarin_1_pt_dun_header_d).text = getTurkishWeekday(currentDayDate.dayOfMonth.toString())
+                }
+                4 -> {
+                    findViewById<TextView>(R.id.yarin_2_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
+                    findViewById<TextView>(R.id.yarin_2_pt_hijri_d).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
 
-                findViewById<TextView>(R.id.yarin_2_pt_imsak_time_d).text = day.times.imsak
-                findViewById<TextView>(R.id.yarin_2_pt_gun_time_d).text = day.times.gunes
-                findViewById<TextView>(R.id.yarin_2_pt_ogle_time_d).text = day.times.ogle
-                findViewById<TextView>(R.id.yarin_2_pt_ikindi_time_d).text = day.times.ikindi
-                findViewById<TextView>(R.id.yarin_2_pt_aksam_time_d).text = day.times.aksam
-                findViewById<TextView>(R.id.yarin_2_pt_yatsi_time_d).text = day.times.yatsi
+                    findViewById<TextView>(R.id.yarin_2_pt_imsak_time_d).text = day.times.imsak
+                    findViewById<TextView>(R.id.yarin_2_pt_gun_time_d).text = day.times.gunes
+                    findViewById<TextView>(R.id.yarin_2_pt_ogle_time_d).text = day.times.ogle
+                    findViewById<TextView>(R.id.yarin_2_pt_ikindi_time_d).text = day.times.ikindi
+                    findViewById<TextView>(R.id.yarin_2_pt_aksam_time_d).text = day.times.aksam
+                    findViewById<TextView>(R.id.yarin_2_pt_yatsi_time_d).text = day.times.yatsi
 
-                findViewById<TextView>(R.id.yarin_2_pt_dun_header_d).text = getTurkishWeekday(currentDayDate.dayOfWeek);
+                    findViewById<TextView>(R.id.yarin_2_pt_dun_header_d).text = getTurkishWeekday(currentDayDate.dayOfWeek)
+                }
             }
         }
 
@@ -1283,7 +1254,7 @@ class MainActivity : AppCompatActivity() {
 
         val cityId = CityManager.getInstance(this@MainActivity).getCityId(city)
             ?: run {
-                Log.e("KDImsakiye","City did not found! : $city")
+                Log.e("KDImsakiye","City not found! : $city")
                 return emptyList()
             }
 
@@ -1298,7 +1269,7 @@ class MainActivity : AppCompatActivity() {
             val response = service.getAnnualCalendar(cityId)
             response.data
         } catch (e: Exception) {
-            Log.e("KDImsakiye", "Yıllık veri çekilemedi: ${e.message}")
+            Log.e("KDImsakiye", "Failed to fetch annual data: ${e.message}")
             emptyList()
         }
     }
@@ -1315,13 +1286,13 @@ class MainActivity : AppCompatActivity() {
 
     private var currentPanel: View? = null
 
-    fun showPanel(newPanel: View, _duration: Long) {
+    fun showPanel(newPanel: View, mDuration: Long) {
         val root = findViewById<ViewGroup>(R.id.mainRoot)
 
         if (newPanel == currentPanel) return
 
         val fade = Fade().apply {
-            duration = _duration
+            duration = mDuration
         }
 
         TransitionManager.beginDelayedTransition(root, fade)
@@ -1421,7 +1392,6 @@ class MainActivity : AppCompatActivity() {
         val interestDays = mutableListOf<PrayTimeData>()
 
         val calendar = Calendar.getInstance()
-        val df = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
         val todayIndex = calendar.get(Calendar.DAY_OF_YEAR) - 1
 
 
@@ -1434,7 +1404,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onVersionClick(view: View) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/akaandonmez/"))
+        Log.d("KD Imsakiye", "User clicked to profile from : " + view.id)
+        val intent = Intent(Intent.ACTION_VIEW, "https://www.linkedin.com/in/akaandonmez/".toUri())
         startActivity(intent)
     }
 }

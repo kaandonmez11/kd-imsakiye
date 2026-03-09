@@ -9,11 +9,11 @@ data class PrayTimeResponse(
 
 data class PrayTimeData(
     val date: String,
-    val hijri_date: HijriDate_N,
+    val hijri: HijriDate,
     val times: Times
 )
 
-data class HijriDate_N(
+data class HijriDate(
     val day: Int,
     val month: Int,
     val year: Int
@@ -29,6 +29,6 @@ data class Times(
 )
 
 data class CityById(
-    val _id: String,
+    val id: String,
     val name: String
 )

@@ -1,12 +1,12 @@
 package com.kdgames.imsakiye
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.kdgames.imsakiye.data.DayData
 import com.kdgames.imsakiye.data.PrayTimeData
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -18,6 +18,7 @@ class DataManager private constructor(private val context: Context) {
     private val gson = Gson()
 
     companion object {
+        @SuppressLint("StaticFieldLeak")
         @Volatile
         private var instance: DataManager? = null
 
@@ -43,7 +44,7 @@ class DataManager private constructor(private val context: Context) {
         return try {
             val pInfo = context.packageManager.getPackageInfo(context.packageName, 0)
             pInfo.longVersionCode.toInt()
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             1
         }
     }
