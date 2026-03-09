@@ -1,0 +1,1471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#19202A">
+
+
+    <ImageView
+        android:id="@+id/sahur_img"
+        android:layout_width="wrap_content"
+        android:layout_height="411dp"
+        android:layout_marginTop="-84dp"
+        android:src="@drawable/sahur_background"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    <ImageView
+        android:id="@+id/sahur_grad"
+        android:layout_width="wrap_content"
+        android:layout_height="171dp"
+        android:layout_marginTop="213dp"
+        android:src="@drawable/sahur_grad"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pt_imsakiye_button_night"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_rect"
+        android:backgroundTint="@color/primary"
+        android:drawableStart="@drawable/imsakiye_icon"
+        android:drawablePadding="16dp"
+        android:drawableTint="@color/secondary"
+        android:fontFamily="@font/outfit"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="İmsakiye"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/secondary"
+        android:textSize="16sp"
+        android:typeface="normal"
+        app:guidelineUseRtl="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/pt_city_name_text_night"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/outfit"
+        android:gravity="center"
+        android:textColor="@color/primary"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/prayer_times_header"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/outfit"
+        android:text="Namaz Vakitleri"
+        android:textAlignment="textStart"
+        android:textColor="@color/primary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/pt_location_set_icon_night"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/location_icon"
+        android:backgroundTint="@color/primary"
+        app:layout_constraintEnd_toStartOf="@+id/pt_city_name_text_night"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/list_back"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/pt_imsakiye_button_night"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prayer_times_header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="35"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dun_pt_greg_date_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:text="99 ARALIK 9999"
+                        android:textAlignment="textStart"
+                        android:textColor="#4F2535"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/dun_pt_hijri_date_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:text="99 RAMAZAN 9999"
+                        android:textAlignment="textStart"
+                        android:textColor="#311E2A"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/dun_pt_dun_header_n"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/outfit"
+                    android:gravity="center"
+                    android:text="Dün"
+                    android:textColor="#28303B"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="8" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:orientation="horizontal">
+
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="16" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dun_pt_imsak_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="İmsak"
+                        android:textColor="#28303B"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/dun_pt_imsak_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="#4F2535"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dun_pt_gun_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Gün"
+                        android:textColor="#28303B"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/dun_pt_gun_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="#4F2535"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dun_pt_ogle_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Öğle"
+                        android:textColor="#28303B"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/dun_pt_ogle_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="#4F2535"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dun_pt_ikindi_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="İkindi"
+                        android:textColor="#28303B"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/dun_pt_ikindi_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="#4F2535"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dun_pt_aksam_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Akşam"
+                        android:textColor="#28303B"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/dun_pt_aksam_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="#4F2535"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dun_pt_yatsi_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Yatsı"
+                        android:textColor="#28303B"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/dun_pt_yatsi_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="#4F2535"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="16" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="8" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_rect"
+            android:backgroundTint="@color/primary"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="35"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/bugun_pt_greg_date_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:text="99 ARALIK 9999"
+                        android:textAlignment="textStart"
+                        android:textColor="#4F111D"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/bugun_pt_hijri_date_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:text="99 RAMAZAN 9999"
+                        android:textAlignment="textStart"
+                        android:textColor="#771A2C"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/bugun_pt_dun_header_n"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/outfit"
+                    android:gravity="center"
+                    android:text="Bugün"
+                    android:textColor="@color/secondary"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="8" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:orientation="horizontal">
+
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="16" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/bugun_pt_imsak_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="İmsak"
+                        android:textColor="@color/secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/bugun_pt_imsak_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="#4F111D"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/bugun_pt_gun_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Gün"
+                        android:textColor="@color/secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/bugun_pt_gun_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="#4F111D"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/bugun_pt_ogle_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Öğle"
+                        android:textColor="@color/secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/bugun_pt_ogle_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="#4F111D"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/bugun_pt_ikindi_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="İkindi"
+                        android:textColor="@color/secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/bugun_pt_ikindi_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="#4F111D"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/bugun_pt_aksam_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Akşam"
+                        android:textColor="@color/secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/bugun_pt_aksam_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="#4F111D"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/bugun_pt_yatsi_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Yatsı"
+                        android:textColor="@color/secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/bugun_pt_yatsi_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="#4F111D"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="16" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="8" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="35"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_pt_greg_date_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:text="99 ARALIK 9999"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/primary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_pt_hijri_date_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:text="99 RAMAZAN 9999"
+                        android:textAlignment="textStart"
+                        android:textColor="#771A2C"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/yarin_pt_dun_header_n"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/outfit"
+                    android:gravity="center"
+                    android:text="Yarın"
+                    android:textColor="#556171"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="8" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:orientation="horizontal">
+
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="16" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_pt_imsak_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="İmsak"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_pt_imsak_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_pt_gun_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Gün"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_pt_gun_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_pt_ogle_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Öğle"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_pt_ogle_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_pt_ikindi_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="İkindi"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_pt_ikindi_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_pt_aksam_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Akşam"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_pt_aksam_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_pt_yatsi_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Yatsı"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_pt_yatsi_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="16" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="8" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="35"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_greg_date_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:text="99 ARALIK 9999"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/primary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_hijri_date_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:text="99 RAMAZAN 9999"
+                        android:textAlignment="textStart"
+                        android:textColor="#771A2C"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/yarin_1_pt_dun_header_n"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/outfit"
+                    android:gravity="center"
+                    android:text="TEST"
+                    android:textColor="#556171"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="8" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:orientation="horizontal">
+
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="16" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_imsak_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="İmsak"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_imsak_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_gun_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Gün"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_gun_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_ogle_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Öğle"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_ogle_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_ikindi_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="İkindi"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_ikindi_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_aksam_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Akşam"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_aksam_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_yatsi_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Yatsı"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_1_pt_yatsi_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="16" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="8" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="35"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_greg_date_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:text="99 ARALIK 9999"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/primary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_hijri_date_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:text="99 RAMAZAN 9999"
+                        android:textAlignment="textStart"
+                        android:textColor="#771A2C"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/yarin_2_pt_dun_header_n"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/outfit"
+                    android:gravity="center"
+                    android:text="TEST"
+                    android:textColor="#556171"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="8" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:orientation="horizontal">
+
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="16" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_imsak_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="İmsak"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_imsak_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_gun_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Gün"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_gun_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_ogle_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Öğle"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_ogle_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_ikindi_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="İkindi"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_ikindi_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_aksam_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Akşam"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_aksam_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="57"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_yatsi_header_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="Yatsı"
+                        android:textColor="#556171"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/yarin_2_pt_yatsi_time_n"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:gravity="center"
+                        android:text="05:00"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="16" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="8" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:clickable="true">
+
+    <include
+        android:id="@+id/loadingPage"
+        layout="@layout/loading_screen" />
+
+    <include
+        android:id="@+id/dayPrayPage"
+        layout="@layout/day_namaz_vakitleri_layout"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/dayImsakiyePage"
+        layout="@layout/day_imsakiye_layout"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/daySettingsPage"
+        layout="@layout/day_ayarlar_layout"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/nightPrayPage"
+        layout="@layout/night_namaz_vakitleri_layout"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/nightImsakiyePage"
+        layout="@layout/night_imsakiye_layout"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/nightSettingsPage"
+        layout="@layout/night_ayarlar_layout"
+        android:visibility="gone" />
+
+</FrameLayout>

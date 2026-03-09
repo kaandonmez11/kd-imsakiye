@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark">#FF525252</color>
+    <color name="light">#FFF1F5F9</color>
+    <color name="primary">#FFEE3458</color>
+    <color name="secondary">#FF334155</color>
+    <color name="disabled_button_n">#FF311E2A</color>
+    <color name="disabled_button_d">#FF99A0AA</color>
+</resources>

@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F5F9">
+
+    <ImageView
+        android:id="@+id/iftar_img"
+        android:layout_width="415dp"
+        android:layout_height="315dp"
+        android:adjustViewBounds="true"
+        android:scaleType="center"
+        android:src="@drawable/iftar_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/city_name_text_day"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/outfit"
+        android:gravity="center"
+        android:textColor="@color/secondary"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/location_set_icon_day"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/location_icon"
+        android:backgroundTint="@color/secondary"
+        app:layout_constraintEnd_toStartOf="@id/city_name_text_day"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iftar_grad"
+        android:layout_width="wrap_content"
+        android:layout_height="171dp"
+        android:layout_marginTop="213dp"
+        android:src="@drawable/iftar_grad"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/day_list_back"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dun_day_index_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="4"
+                android:textAlignment="gravity"
+                android:textColor="#99a0aa"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/dun_header_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Dün"
+                android:textAlignment="gravity"
+                android:textColor="#99a0aa"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/dun_sahur_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="06:30"
+                android:textAlignment="gravity"
+                android:textColor="#f9bbc7"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/dun_iftar_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="16:14"
+                android:textAlignment="gravity"
+                android:textColor="#f9bbc7"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_rect"
+            android:backgroundTint="#FCD6DE"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/bugun_day_index_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="5"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/bugun_header_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Bugün"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/bugun_sahur_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="06:30"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/bugun_iftar_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="16:14"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/yarin_day_index_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="6"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_header_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Yarın"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_sahur_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="06:30"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_iftar_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="16:14"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/yarin_1_day_index_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="7"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_1_header_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Pzt"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_1_sahur_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="06:30"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_1_iftar_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="16:14"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/yarin_2_day_index_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="8"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_2_header_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Sal"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_2_sahur_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="06:30"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_2_iftar_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="16:14"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/yarin_3_day_index_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="9"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_3_header_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Per"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_3_sahur_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="06:30"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_3_iftar_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="16:14"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/yarin_4_day_index_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="10"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_4_header_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Cum"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_4_sahur_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="06:30"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_4_iftar_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="16:14"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/yarin_5_day_index_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="11"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_5_header_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Cmt"
+                android:textAlignment="gravity"
+                android:textColor="@color/secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_5_sahur_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="06:30"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/yarin_5_iftar_vakti_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="16:14"
+                android:textAlignment="gravity"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:clipChildren="false"
+        android:clipToOutline="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="8dp"
+        >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/prayer_times_button_day"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_rect"
+            android:backgroundTint="@color/secondary"
+            android:drawableStart="@drawable/prayer_times_icon"
+            android:drawablePadding="16dp"
+            android:drawableTint="@color/light"
+            android:fontFamily="@font/outfit"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="Namaz Vakitleri"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/light"
+            android:textSize="14sp"
+            android:typeface="normal" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/settings_button_day"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_rect"
+            android:backgroundTint="@color/secondary"
+            android:drawableStart="@drawable/settings_logo"
+            android:drawablePadding="16dp"
+            android:drawableTint="@color/light"
+            android:fontFamily="@font/outfit"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="Ayarlar"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/light"
+            android:textSize="14sp"
+            android:typeface="normal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="193dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/regular_date_text_day"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/outfit"
+                android:gravity="left|center"
+                android:text="22 Şubat 2025"
+                android:textAllCaps="false"
+                android:textColor="#77808E"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/day_text_day"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="right|center"
+                android:text="Pazar"
+                android:textColor="@color/primary"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ramazan_date_text_day"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:fontFamily="@font/outfit"
+            android:gravity="left|center"
+            android:text="4 Ramazan 1447"
+            android:textAllCaps="false"
+            android:textColor="#99A0AA"
+            android:textSize="13sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/type_text_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:gravity="left|center_vertical"
+                android:text="İFTAR"
+                android:textAllCaps="false"
+                android:textColor="@color/secondary"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/remaining_time_text_day"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/outfit"
+                android:gravity="right|center_vertical"
+                android:text="10:22"
+                android:textAllCaps="false"
+                android:textColor="@color/primary"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
