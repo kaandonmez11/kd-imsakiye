@@ -362,7 +362,7 @@ class MainActivity : AppCompatActivity() {
             val currentDayDate = LocalDate.parse(day.date, DateTimeFormatter.ISO_DATE_TIME)
 
             // Only Ramadan month (Hijri 9th month)
-            if (day.hijri.month == 9) {
+            if (day.hijri_date.month == 9) {
 
                 val sahurTime = LocalTime.parse(day.times.imsak)
                 val sahurDateTime = LocalDateTime.of(currentDayDate, sahurTime)
@@ -565,51 +565,51 @@ class MainActivity : AppCompatActivity() {
 
             when (index) {
                 0 -> {
-                    findViewById<TextView>(R.id.dun_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.dun_day_index_night).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.dun_iftar_vakti_night).text = day.times.aksam
                     findViewById<TextView>(R.id.dun_sahur_vakti_night).text = day.times.imsak
                 }
                 1 -> {
                     findViewById<TextView>(R.id.regular_date_text_night).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.month.value) + " " + currentDayDate.year.toString()
-                    findViewById<TextView>(R.id.ramazan_date_text_night).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.ramazan_date_text_night).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
                     findViewById<TextView>(R.id.day_text_night).text = getTurkishWeekday(currentDayDate.dayOfWeek)
                     // list items
-                    findViewById<TextView>(R.id.bugun_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.bugun_day_index_night).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.bugun_iftar_vakti_night).text = day.times.aksam
                     findViewById<TextView>(R.id.bugun_sahur_vakti_night).text = day.times.imsak
                 }
                 2 -> {
-                    findViewById<TextView>(R.id.yarin_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_day_index_night).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.yarin_iftar_vakti_night).text = day.times.aksam
                     findViewById<TextView>(R.id.yarin_sahur_vakti_night).text = day.times.imsak
                 }
                 3 -> {
                     findViewById<TextView>(R.id.yarin_1_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                    findViewById<TextView>(R.id.yarin_1_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_1_day_index_night).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.yarin_1_iftar_vakti_night).text = day.times.aksam
                     findViewById<TextView>(R.id.yarin_1_sahur_vakti_night).text = day.times.imsak
                 }
                 4 -> {
                     findViewById<TextView>(R.id.yarin_2_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                    findViewById<TextView>(R.id.yarin_2_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_2_day_index_night).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.yarin_2_iftar_vakti_night).text = day.times.aksam
                     findViewById<TextView>(R.id.yarin_2_sahur_vakti_night).text = day.times.imsak
                 }
                 5 -> {
                     findViewById<TextView>(R.id.yarin_3_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                    findViewById<TextView>(R.id.yarin_3_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_3_day_index_night).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.yarin_3_iftar_vakti_night).text = day.times.aksam
                     findViewById<TextView>(R.id.yarin_3_sahur_vakti_night).text = day.times.imsak
                 }
                 6 -> {
                     findViewById<TextView>(R.id.yarin_4_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                    findViewById<TextView>(R.id.yarin_4_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_4_day_index_night).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.yarin_4_iftar_vakti_night).text = day.times.aksam
                     findViewById<TextView>(R.id.yarin_4_sahur_vakti_night).text = day.times.imsak
                 }
                 7 -> {
                     findViewById<TextView>(R.id.yarin_5_header_night).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                    findViewById<TextView>(R.id.yarin_5_day_index_night).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_5_day_index_night).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.yarin_5_iftar_vakti_night).text = day.times.aksam
                     findViewById<TextView>(R.id.yarin_5_sahur_vakti_night).text = day.times.imsak
                 }
@@ -648,51 +648,51 @@ class MainActivity : AppCompatActivity() {
             val currentDayDate = LocalDate.parse(day.date, DateTimeFormatter.ISO_DATE_TIME)
             when (index) {
                 0 -> {
-                    findViewById<TextView>(R.id.dun_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.dun_day_index_day).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.dun_iftar_vakti_day).text = day.times.aksam
                     findViewById<TextView>(R.id.dun_sahur_vakti_day).text = day.times.imsak
                 }
                 1 -> {
                     findViewById<TextView>(R.id.regular_date_text_day).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                    findViewById<TextView>(R.id.ramazan_date_text_day).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.ramazan_date_text_day).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
                     findViewById<TextView>(R.id.day_text_day).text = getTurkishWeekday(currentDayDate.dayOfWeek)
                     // list items
-                    findViewById<TextView>(R.id.bugun_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.bugun_day_index_day).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.bugun_iftar_vakti_day).text = day.times.aksam
                     findViewById<TextView>(R.id.bugun_sahur_vakti_day).text = day.times.imsak
                 }
                 2 -> {
-                    findViewById<TextView>(R.id.yarin_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_day_index_day).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.yarin_iftar_vakti_day).text = day.times.aksam
                     findViewById<TextView>(R.id.yarin_sahur_vakti_day).text = day.times.imsak
                 }
                 3 -> {
                     findViewById<TextView>(R.id.yarin_1_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                    findViewById<TextView>(R.id.yarin_1_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_1_day_index_day).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.yarin_1_iftar_vakti_day).text = day.times.aksam
                     findViewById<TextView>(R.id.yarin_1_sahur_vakti_day).text = day.times.imsak
                 }
                 4 -> {
                     findViewById<TextView>(R.id.yarin_2_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                    findViewById<TextView>(R.id.yarin_2_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_2_day_index_day).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.yarin_2_iftar_vakti_day).text = day.times.aksam
                     findViewById<TextView>(R.id.yarin_2_sahur_vakti_day).text = day.times.imsak
                 }
                 5 -> {
                     findViewById<TextView>(R.id.yarin_3_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                    findViewById<TextView>(R.id.yarin_3_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_3_day_index_day).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.yarin_3_iftar_vakti_day).text = day.times.aksam
                     findViewById<TextView>(R.id.yarin_3_sahur_vakti_day).text = day.times.imsak
                 }
                 6 -> {
                     findViewById<TextView>(R.id.yarin_4_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                    findViewById<TextView>(R.id.yarin_4_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_4_day_index_day).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.yarin_4_iftar_vakti_day).text = day.times.aksam
                     findViewById<TextView>(R.id.yarin_4_sahur_vakti_day).text = day.times.imsak
                 }
                 7 -> {
                     findViewById<TextView>(R.id.yarin_5_header_day).text = getTurkishShortDay(getTurkishWeekday(currentDayDate.dayOfWeek))
-                    findViewById<TextView>(R.id.yarin_5_day_index_day).text = day.hijri.day.toString()
+                    findViewById<TextView>(R.id.yarin_5_day_index_day).text = day.hijri_date.day.toString()
                     findViewById<TextView>(R.id.yarin_5_iftar_vakti_day).text = day.times.aksam
                     findViewById<TextView>(R.id.yarin_5_sahur_vakti_day).text = day.times.imsak
                 }
@@ -1093,7 +1093,7 @@ class MainActivity : AppCompatActivity() {
             when (index) {
                 0 -> {
                     findViewById<TextView>(R.id.dun_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                    findViewById<TextView>(R.id.dun_pt_hijri_n).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.dun_pt_hijri_n).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
 
                     findViewById<TextView>(R.id.dun_pt_imsak_time_n).text = day.times.imsak
                     findViewById<TextView>(R.id.dun_pt_gun_time_n).text = day.times.gunes
@@ -1105,7 +1105,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 1 -> {
                     findViewById<TextView>(R.id.bugun_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                    findViewById<TextView>(R.id.bugun_pt_hijri_n).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.bugun_pt_hijri_n).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
 
                     findViewById<TextView>(R.id.bugun_pt_imsak_time_n).text = day.times.imsak
                     findViewById<TextView>(R.id.bugun_pt_gun_time_n).text = day.times.gunes
@@ -1117,7 +1117,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 2 -> {
                     findViewById<TextView>(R.id.yarin_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                    findViewById<TextView>(R.id.yarin_pt_hijri_n).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.yarin_pt_hijri_n).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
 
                     findViewById<TextView>(R.id.yarin_pt_imsak_time_n).text = day.times.imsak
                     findViewById<TextView>(R.id.yarin_pt_gun_time_n).text = day.times.gunes
@@ -1128,7 +1128,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 3 -> {
                     findViewById<TextView>(R.id.yarin_1_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                    findViewById<TextView>(R.id.yarin_1_pt_hijri_n).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.yarin_1_pt_hijri_n).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
 
                     findViewById<TextView>(R.id.yarin_1_pt_imsak_time_n).text = day.times.imsak
                     findViewById<TextView>(R.id.yarin_1_pt_gun_time_n).text = day.times.gunes
@@ -1141,7 +1141,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 4 -> {
                     findViewById<TextView>(R.id.yarin_2_pt_greg_date_n).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                    findViewById<TextView>(R.id.yarin_2_pt_hijri_n).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.yarin_2_pt_hijri_n).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
 
                     findViewById<TextView>(R.id.yarin_2_pt_imsak_time_n).text = day.times.imsak
                     findViewById<TextView>(R.id.yarin_2_pt_gun_time_n).text = day.times.gunes
@@ -1182,7 +1182,7 @@ class MainActivity : AppCompatActivity() {
             when (index) {
                 0 -> {
                     findViewById<TextView>(R.id.dun_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                    findViewById<TextView>(R.id.dun_pt_hijri_d).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.dun_pt_hijri_d).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
 
                     findViewById<TextView>(R.id.dun_pt_imsak_time_d).text = day.times.imsak
                     findViewById<TextView>(R.id.dun_pt_gun_time_d).text = day.times.gunes
@@ -1194,7 +1194,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 1 -> {
                     findViewById<TextView>(R.id.bugun_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                    findViewById<TextView>(R.id.bugun_pt_hijri_d).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.bugun_pt_hijri_d).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
 
                     findViewById<TextView>(R.id.bugun_pt_imsak_time_d).text = day.times.imsak
                     findViewById<TextView>(R.id.bugun_pt_gun_time_d).text = day.times.gunes
@@ -1206,7 +1206,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 2 -> {
                     findViewById<TextView>(R.id.yarin_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                    findViewById<TextView>(R.id.yarin_pt_hijri_d).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.yarin_pt_hijri_d).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
 
                     findViewById<TextView>(R.id.yarin_pt_imsak_time_d).text = day.times.imsak
                     findViewById<TextView>(R.id.yarin_pt_gun_time_d).text = day.times.gunes
@@ -1217,7 +1217,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 3 -> {
                     findViewById<TextView>(R.id.yarin_1_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                    findViewById<TextView>(R.id.yarin_1_pt_hijri_d).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.yarin_1_pt_hijri_d).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
 
                     findViewById<TextView>(R.id.yarin_1_pt_imsak_time_d).text = day.times.imsak
                     findViewById<TextView>(R.id.yarin_1_pt_gun_time_d).text = day.times.gunes
@@ -1226,11 +1226,11 @@ class MainActivity : AppCompatActivity() {
                     findViewById<TextView>(R.id.yarin_1_pt_aksam_time_d).text = day.times.aksam
                     findViewById<TextView>(R.id.yarin_1_pt_yatsi_time_d).text = day.times.yatsi
 
-                    findViewById<TextView>(R.id.yarin_1_pt_dun_header_d).text = getTurkishWeekday(currentDayDate.dayOfMonth.toString())
+                    findViewById<TextView>(R.id.yarin_1_pt_dun_header_d).text = getTurkishWeekday(currentDayDate.dayOfWeek)
                 }
                 4 -> {
                     findViewById<TextView>(R.id.yarin_2_pt_greg_date_d).text = currentDayDate.dayOfMonth.toString() + " " + getTurkishGregMonth(currentDayDate.monthValue) + " " + currentDayDate.year.toString()
-                    findViewById<TextView>(R.id.yarin_2_pt_hijri_d).text = day.hijri.day.toString() + " " + getTurkishHijriMonth(day.hijri.month) + " " + day.hijri.year.toString()
+                    findViewById<TextView>(R.id.yarin_2_pt_hijri_d).text = day.hijri_date.day.toString() + " " + getTurkishHijriMonth(day.hijri_date.month) + " " + day.hijri_date.year.toString()
 
                     findViewById<TextView>(R.id.yarin_2_pt_imsak_time_d).text = day.times.imsak
                     findViewById<TextView>(R.id.yarin_2_pt_gun_time_d).text = day.times.gunes

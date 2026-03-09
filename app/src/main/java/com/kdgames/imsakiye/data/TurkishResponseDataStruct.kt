@@ -9,7 +9,7 @@ data class PrayTimeResponse(
 
 data class PrayTimeData(
     val date: String,
-    val hijri: HijriDate,
+    val hijri_date: HijriDate,
     val times: Times
 )
 

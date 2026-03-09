@@ -295,7 +295,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/outfit"
-            android:text="v1.1.0"
+            android:text="v1.1.1"
             android:textAlignment="center"
             android:textColor="#481D2B" />
     </LinearLayout>
