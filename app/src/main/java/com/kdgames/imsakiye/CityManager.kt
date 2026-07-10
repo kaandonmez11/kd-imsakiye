@@ -5,6 +5,8 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.kdgames.imsakiye.data.CityById
+import java.text.Collator
+import java.util.Locale
 
 class CityManager private constructor(private val context: Context) {
     private val gson = Gson()
@@ -37,5 +39,10 @@ class CityManager private constructor(private val context: Context) {
         return loadCities().find {
             it.name.equals(city, ignoreCase = true)
         }?.id
+    }
+
+    fun getCityNames(): List<String> {
+        val collator = Collator.getInstance(Locale.forLanguageTag("tr-TR"))
+        return loadCities().map { it.name }.sortedWith(collator)
     }
 }

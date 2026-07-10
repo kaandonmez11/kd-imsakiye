@@ -19,3 +19,17 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Gson: veri modelleri reflection ile deserialize ediliyor
+-keep class com.kdgames.imsakiye.data.** { *; }
+-keepattributes Signature, *Annotation*
+-keep class com.google.gson.reflect.TypeToken { *; }
+-keep class * extends com.google.gson.reflect.TypeToken
+
+# Retrofit
+-keepattributes Exceptions
+-if interface * { @retrofit2.http.* <methods>; }
+-keep,allowobfuscation interface <1>
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-dontwarn javax.annotation.**
