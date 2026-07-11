@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- KD İmsakiye — Light theme tokens -->
 <resources>
-    <!-- KD İmsakiye — Light theme tokens (dark karşılıkları values-night/colors.xml) -->
     <color name="bg">#F7F4EF</color>
     <color name="surface">#FFFFFF</color>
     <color name="surface_cell">#FBF9F4</color>
@@ -21,22 +21,11 @@
     <color name="accent_border">#E8B08A</color>
     <color name="on_accent">#FFF7F2</color>
     <color name="accent_glow">#8CC25A36</color><!-- accent @ 55% -->
-    <color name="accent_glow_soft">#38C25A36</color><!-- glow dış halkası (blur yaklaşımı) -->
 
-    <color name="header_band">#D17351</color><!-- güncellenen illüstrasyonun zeminiyle eşleşir -->
+    <color name="header_band">#F0AE75</color>
 
     <color name="nav_bar">#FFFFFF</color>
     <color name="nav_active_tab">#F0EBE1</color>
     <color name="nav_active_content">#22303F</color>
     <color name="nav_inactive">#22303F</color>
-    <color name="nav_shadow">#4722303F</color><!-- rgba(34,48,63,.28) -->
-    <color name="seg_selected">#FFFFFF</color><!-- görünüm segmenti seçili zemin -->
-
-    <!-- Eski tasarımın renkleri: eski layout'lar silinince kaldırılacak -->
-    <color name="dark">#FF525252</color>
-    <color name="light">#FFF1F5F9</color>
-    <color name="primary">#FFEE3458</color>
-    <color name="secondary">#FF334155</color>
-    <color name="disabled_button_n">#FF311E2A</color>
-    <color name="disabled_button_d">#FF99A0AA</color>
 </resources>

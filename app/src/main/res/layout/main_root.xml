@@ -3,42 +3,51 @@
     android:id="@+id/mainRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:clickable="true"
     android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:clickable="true">
+    android:focusableInTouchMode="true">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/header_band" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <include
+                android:id="@+id/imsakiyePage"
+                layout="@layout/imsakiye_layout"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/vakitlerPage"
+                layout="@layout/vakitler_layout"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/ayarlarPage"
+                layout="@layout/ayarlar_layout"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Veri hazır olana dek her şeyi (header dahil) örter -->
     <include
         android:id="@+id/loadingPage"
         layout="@layout/loading_screen" />
 
+    <!-- Navbar içerik üstünde yüzer; scroll içeriği arkasından geçer -->
     <include
-        android:id="@+id/dayPrayPage"
-        layout="@layout/day_namaz_vakitleri_layout"
+        android:id="@+id/navBar"
+        layout="@layout/nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:visibility="gone" />
-
-    <include
-        android:id="@+id/dayImsakiyePage"
-        layout="@layout/day_imsakiye_layout"
-        android:visibility="gone" />
-
-    <include
-        android:id="@+id/daySettingsPage"
-        layout="@layout/day_ayarlar_layout"
-        android:visibility="gone" />
-
-    <include
-        android:id="@+id/nightPrayPage"
-        layout="@layout/night_namaz_vakitleri_layout"
-        android:visibility="gone" />
-
-    <include
-        android:id="@+id/nightImsakiyePage"
-        layout="@layout/night_imsakiye_layout"
-        android:visibility="gone" />
-
-    <include
-        android:id="@+id/nightSettingsPage"
-        layout="@layout/night_ayarlar_layout"
-        android:visibility="gone" />
-
 </FrameLayout>

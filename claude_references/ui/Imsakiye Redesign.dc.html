@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&amp;family=Azeret+Mono:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;family=Quicksand:wght@400;500;600;700&amp;family=Baloo+2:wght@400;500;600;700;800&amp;family=Sono:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{--ui-font:'Schibsted Grotesk',system-ui,sans-serif;--num-font:'Azeret Mono',monospace}
+body{margin:0;background:#EFEBE3;font-family:var(--ui-font)}
+a{color:#C25A36;text-decoration:none}
+a:hover{color:#A34526}
+.dv-turn{padding:40px 44px 32px;scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#22303F;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 'Schibsted Grotesk',sans-serif;color:#22303F}
+.dv-note{max-width:760px;font:400 12px/1.6 'Schibsted Grotesk',sans-serif;color:rgba(34,48,63,.62);margin:0 0 26px}
+.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:10px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(34,48,63,.10);color:#22303F;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11.5px/1.3 'Schibsted Grotesk',sans-serif;color:rgba(34,48,63,.55)}
+.dv-opt:target .dv-oid{background:#C25A36;color:#fff}
+.dv-next{margin:26px 0 0;font:12px/1.5 'Schibsted Grotesk',sans-serif;color:rgba(34,48,63,.5)}
+[data-hide-scrollbar]::-webkit-scrollbar{display:none;width:0;height:0}
+@keyframes omGlowBreathe{0%,100%{box-shadow:0 0 5px 0 currentColor}50%{box-shadow:0 0 13px 2.5px currentColor}}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t4">
+  <div class="dv-thd"><a class="dv-tid" href="#t4">4</a><span class="dv-tname">Gece teması — referans görselden uyarlanmış</span></div>
+  <p class="dv-note">Aynı düzen, gece paleti: illüstrasyondaki derin lacivert zemin, kartlar bir ton açık; accent referanstaki pembe-kırmızının geceye yumuşatılmış gül tonu. Referanstaki her-şey-kırmızı yaklaşımı yerine vurgu yine sadece "şimdi önemli olanda". İllüstrasyon: attığın görselden kırpılmış gece bandı.</p>
+  <div class="dv-opts">
+
+    <!-- ============ 3a — İMSAKİYE ============ -->
+    <div class="dv-opt" id="4a">
+      <div class="dv-olabel"><a class="dv-oid" href="#4a">4a</a>İmsakiye — gece</div>
+      <div data-screen-label="İmsakiye Dark" style="width:412px;height:900px;background:#16202E;border-radius:32px;border:1px solid #2A3648;box-shadow:0 16px 40px rgba(0,0,0,.5);display:flex;flex-direction:column;overflow:hidden;color:#E9EDF3;position:relative">
+        <div style="background:#233B5D;flex:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 26px 0;font-family:var(--num-font);font-size:13px;font-weight:500;color:#E9EDF3">
+            <span>14:46</span>
+            <span style="display:flex;align-items:center;gap:5px">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E9EDF3" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"></path></svg>
+              <svg width="20" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="20" height="11" rx="3" stroke="#E9EDF3" stroke-width="1.5"></rect><rect x="3" y="3" width="12" height="7" rx="1.5" fill="#E9EDF3"></rect><rect x="23" y="4" width="2.4" height="5" rx="1.2" fill="#E9EDF3"></rect></svg>
+            </span>
+          </div>
+          <div style="display:flex;justify-content:center;padding:10px 0 2px">
+            <span style="display:flex;align-items:center;gap:7px;font-size:16px;font-weight:700;color:#E9EDF3">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E9EDF3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.4-6.5-10.2A6.5 6.5 0 0112 4.3a6.5 6.5 0 016.5 6.5C18.5 15.6 12 21 12 21z"></path><circle cx="12" cy="10.8" r="2.2"></circle></svg>
+              İzmir
+            </span>
+          </div>
+          <img src="assets/header-illo-dark.png" alt="" style="width:100%;display:block;margin-bottom:-1px">
+        </div>
+
+        <div style="display:flex;align-items:baseline;justify-content:space-between;padding:18px 26px 0;flex:none">
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <div style="font-size:17px;font-weight:700">7 Temmuz, Salı</div>
+            <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}">
+              <div style="font-size:12.5px;color:#7C8797">22 Muharrem 1448</div>
+            </sc-if>
+          </div>
+          <div style="font-size:12.5px;font-weight:600;color:#7C8797">Diyanet takvimi</div>
+        </div>
+
+        <div style="padding:18px 26px 20px;display:flex;flex-direction:column;gap:11px;flex:none">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.2em;color:#7C8797">{{ countLabel }}</div>
+          <div style="font-family:var(--num-font);font-weight:300;font-size:52px;line-height:1;letter-spacing:-.02em;color:#E9EDF3;font-variant-numeric:tabular-nums">{{ countdown }}</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
+            <div style="height:4px;border-radius:2px;background:#2A3648;position:relative">
+              <div style="position:absolute;left:0;top:0;bottom:0;width:64%;border-radius:2px;background:#E8536B;box-shadow:0 0 10px 1.5px rgba(232,83,107,.65)"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:12.5px">
+              <span style="color:#7C8797">İmsak <span style="font-family:var(--num-font);font-weight:500;color:#93A0AF">03:59</span></span>
+              <span style="color:#7C8797">İftar <span style="font-family:var(--num-font);font-weight:600;color:#E8536B">20:45</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin:0 20px;flex:1;min-height:0;display:flex;flex-direction:column;background:#1D2938;border:1px solid #283548;border-radius:22px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;padding:15px 22px 9px;font-size:11px;font-weight:600;letter-spacing:.06em;color:#6B7686;border-bottom:1px solid #263243;flex:none">
+            <span></span><span>TEMMUZ</span><span style="text-align:right">İMSAK</span><span style="text-align:right">İFTAR</span>
+          </div>
+          <div data-hide-scrollbar="1" style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none">
+            <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:12px 22px;opacity:.42">
+              <span style="font-family:var(--num-font);font-size:13px;color:#93A0AF">21</span>
+              <span style="font-size:15px;font-weight:500;color:#C3CBD6">Dün</span>
+              <span style="font-family:var(--num-font);font-size:15px;color:#C3CBD6;text-align:right">03:59</span>
+              <span style="font-family:var(--num-font);font-size:15px;color:#C3CBD6;text-align:right">20:46</span>
+            </div>
+            <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:12px 22px;background:#3A2230">
+              <span style="font-family:var(--num-font);font-size:13px;color:#E8536B">22</span>
+              <span style="font-size:15px;font-weight:700;color:#E9EDF3">Bugün</span>
+              <span style="font-family:var(--num-font);font-size:15px;font-weight:600;color:#E8536B;text-align:right">03:59</span>
+              <span style="font-family:var(--num-font);font-size:15px;font-weight:600;color:#E8536B;text-align:right">20:45</span>
+            </div>
+            <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:12px 22px">
+              <span style="font-family:var(--num-font);font-size:13px;color:#6B7686">23</span>
+              <span style="font-size:15px;font-weight:500;color:#C3CBD6">Yarın</span>
+              <span style="font-family:var(--num-font);font-size:15px;color:#C3CBD6;text-align:right">04:00</span>
+              <span style="font-family:var(--num-font);font-size:15px;color:#C3CBD6;text-align:right">20:45</span>
+            </div>
+            <sc-for list="{{ imsakRows }}" as="r" hint-placeholder-count="6">
+              <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:12px 22px">
+                <span style="font-family:var(--num-font);font-size:13px;color:#6B7686">{{ r.h }}</span>
+                <span style="font-size:15px;font-weight:500;color:#C3CBD6">{{ r.label }}</span>
+                <span style="font-family:var(--num-font);font-size:15px;color:#C3CBD6;text-align:right">{{ r.imsak }}</span>
+                <span style="font-family:var(--num-font);font-size:15px;color:#C3CBD6;text-align:right">{{ r.iftar }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="flex:none;padding:12px 24px 4px">
+          <div style="display: flex; align-items: center; background: #28374E; border-radius: 26px; padding: 6px; box-shadow: 0 12px 28px rgba(0,0,0,.45)">
+            <div style="display: flex; align-items: center; gap: 8px; background: #0F1826; border-radius: 20px; padding: 10px 20px; color: #F2F5F9">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 119.5 4 7 7 0 0020 14.5z"></path></svg>
+              <span style="font-size:12.5px;font-weight:700">İmsakiye</span>
+            </div>
+            <div style="flex:1;display:flex;justify-content:center;padding:10px 0;color:rgba(233,237,243,.5)">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"></circle><path d="M12 7.5V12l3 1.8"></path></svg>
+            </div>
+            <div style="flex:1;display:flex;justify-content:center;padding:10px 0;color:rgba(233,237,243,.5)">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.4" fill="#0F1826"></circle><circle cx="15" cy="16" r="2.4" fill="#0F1826"></circle></svg>
+            </div>
+          </div>
+        </div>
+        <div style="width:112px;height:4px;border-radius:2px;background:#E9EDF3;opacity:.3;margin:6px auto 10px;flex:none"></div>
+      </div>
+    </div>
+
+    <!-- ============ 3b — NAMAZ VAKİTLERİ ============ -->
+    <div class="dv-opt" id="4b">
+      <div class="dv-olabel"><a class="dv-oid" href="#4b">4b</a>Namaz Vakitleri — gece</div>
+      <div data-screen-label="Namaz Vakitleri Dark" style="width:412px;height:900px;background:#16202E;border-radius:32px;border:1px solid #2A3648;box-shadow:0 16px 40px rgba(0,0,0,.5);display:flex;flex-direction:column;overflow:hidden;color:#E9EDF3;position:relative">
+        <div style="background:#233B5D;flex:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 26px 0;font-family:var(--num-font);font-size:13px;font-weight:500;color:#E9EDF3">
+            <span>14:46</span>
+            <span style="display:flex;align-items:center;gap:5px">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E9EDF3" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"></path></svg>
+              <svg width="20" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="20" height="11" rx="3" stroke="#E9EDF3" stroke-width="1.5"></rect><rect x="3" y="3" width="12" height="7" rx="1.5" fill="#E9EDF3"></rect><rect x="23" y="4" width="2.4" height="5" rx="1.2" fill="#E9EDF3"></rect></svg>
+            </span>
+          </div>
+          <div style="display:flex;justify-content:center;padding:10px 0 2px">
+            <span style="display:flex;align-items:center;gap:7px;font-size:16px;font-weight:700;color:#E9EDF3">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E9EDF3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.4-6.5-10.2A6.5 6.5 0 0112 4.3a6.5 6.5 0 016.5 6.5C18.5 15.6 12 21 12 21z"></path><circle cx="12" cy="10.8" r="2.2"></circle></svg>
+              İzmir
+            </span>
+          </div>
+          <img src="assets/header-illo-dark.png" alt="" style="width:100%;display:block;margin-bottom:-1px">
+        </div>
+
+        <div style="display:flex;align-items:baseline;justify-content:space-between;padding:16px 26px 4px;flex:none">
+          <div style="font-size:20px;font-weight:800;letter-spacing:-.01em">Namaz Vakitleri</div>
+          <div style="font-size:12px;font-weight:600;color:#7C8797">Temmuz 2026</div>
+        </div>
+
+        <div data-hide-scrollbar="1" style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none;padding:10px 20px 8px;display:flex;flex-direction:column;gap:10px">
+          <div style="flex:none;background:#1D2938;border:1px solid #283548;border-radius:20px;overflow:hidden;opacity:.5">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 6px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#C3CBD6">6 Temmuz, Pazartesi</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#7C8797">21 Muharrem</span></sc-if>
+              </span>
+              <span style="font-size:11px;font-weight:700;color:#7C8797">DÜN</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 10px 10px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">03:59</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">05:47</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">13:21</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">20:46</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">22:26</span></span>
+            </div>
+          </div>
+
+          <div style="flex:none;background:#1D2938;border:1.5px solid #8A4257;border-radius:20px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.35)">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px 12px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:16px;font-weight:700">7 Temmuz, Salı</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#7C8797">22 Muharrem</span></sc-if>
+              </span>
+              <span style="font-size:11px;font-weight:700;letter-spacing:.04em;background:#E8536B;color:#FFF2F4;border-radius:100px;padding:4px 10px">BUGÜN</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 14px 16px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:12px;background:#223041;opacity:.45"><span style="font-size:11px;font-weight:600;color:#6B7686">İmsak</span><span style="font-family:var(--num-font);font-size:17px;font-weight:400;color:#E9EDF3">03:59</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:12px;background:#223041;opacity:.45"><span style="font-size:11px;font-weight:600;color:#6B7686">Güneş</span><span style="font-family:var(--num-font);font-size:17px;font-weight:400;color:#E9EDF3">05:47</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:12px;background:#223041;opacity:.45"><span style="font-size:11px;font-weight:600;color:#6B7686">Öğle</span><span style="font-family:var(--num-font);font-size:17px;font-weight:400;color:#E9EDF3">13:21</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:12px;background:#3A2230;outline:1.5px solid #8A4257;outline-offset:-1.5px"><span style="font-size:11px;font-weight:700;color:#E8536B">İkindi</span><span style="font-family:var(--num-font);font-size:17px;font-weight:600;color:#E8536B">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:12px;background:#223041"><span style="font-size:11px;font-weight:600;color:#6B7686">Akşam</span><span style="font-family:var(--num-font);font-size:17px;font-weight:600;color:#E9EDF3">20:45</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:12px;background:#223041"><span style="font-size:11px;font-weight:600;color:#6B7686">Yatsı</span><span style="font-family:var(--num-font);font-size:17px;font-weight:600;color:#E9EDF3">22:25</span></span>
+            </div>
+          </div>
+
+          <div style="flex:none;background:#1D2938;border:1px solid #283548;border-radius:20px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 6px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#C3CBD6">8 Temmuz, Çarşamba</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#7C8797">23 Muharrem</span></sc-if>
+              </span>
+              <span style="font-size:11px;font-weight:700;color:#7C8797">YARIN</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 10px 10px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">04:00</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">05:48</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">13:22</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">20:45</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">22:25</span></span>
+            </div>
+          </div>
+
+          <div style="flex:none;background:#1D2938;border:1px solid #283548;border-radius:20px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 6px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#C3CBD6">9 Temmuz, Perşembe</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#7C8797">24 Muharrem</span></sc-if>
+              </span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 10px 10px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">04:01</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">05:49</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">13:22</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">20:45</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">22:24</span></span>
+            </div>
+          </div>
+
+          <div style="flex:none;background:#1D2938;border:1px solid #283548;border-radius:20px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 6px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#C3CBD6">10 Temmuz, Cuma</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#7C8797">25 Muharrem</span></sc-if>
+              </span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 10px 10px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">04:02</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">05:49</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">13:22</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">20:44</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">22:24</span></span>
+            </div>
+          </div>
+
+          <div style="flex:none;background:#1D2938;border:1px solid #283548;border-radius:20px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 6px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#C3CBD6">11 Temmuz, Cumartesi</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#7C8797">26 Muharrem</span></sc-if>
+              </span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 10px 10px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">04:03</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">05:50</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">13:22</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">20:44</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">22:23</span></span>
+            </div>
+          </div>
+
+          <div style="flex:none;background:#1D2938;border:1px solid #283548;border-radius:20px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 6px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#C3CBD6">12 Temmuz, Pazar</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#7C8797">27 Muharrem</span></sc-if>
+              </span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 10px 10px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">04:04</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">05:51</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">13:22</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">17:16</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">20:44</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#6B7686">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#C3CBD6">22:22</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:none;padding:12px 24px 4px">
+          <div style="display: flex; align-items: center; background: #28374E; border-radius: 26px; padding: 6px; box-shadow: 0 12px 28px rgba(0,0,0,.45)">
+            <div style="flex:1;display:flex;justify-content:center;padding:10px 0;color:rgba(233,237,243,.5)">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 119.5 4 7 7 0 0020 14.5z"></path></svg>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; background: #0F1826; border-radius: 20px; padding: 10px 20px; color: #F2F5F9">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"></circle><path d="M12 7.5V12l3 1.8"></path></svg>
+              <span style="font-size:12.5px;font-weight:700">Vakitler</span>
+            </div>
+            <div style="flex:1;display:flex;justify-content:center;padding:10px 0;color:rgba(233,237,243,.5)">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.4" fill="#0F1826"></circle><circle cx="15" cy="16" r="2.4" fill="#0F1826"></circle></svg>
+            </div>
+          </div>
+        </div>
+        <div style="width:112px;height:4px;border-radius:2px;background:#E9EDF3;opacity:.3;margin:6px auto 10px;flex:none"></div>
+      </div>
+    </div>
+
+    <!-- ============ 3c — AYARLAR ============ -->
+    <div class="dv-opt" id="4c">
+      <div class="dv-olabel"><a class="dv-oid" href="#4c">4c</a>Ayarlar — gece</div>
+      <div data-screen-label="Ayarlar Dark" style="width:412px;height:900px;background:#16202E;border-radius:32px;border:1px solid #2A3648;box-shadow:0 16px 40px rgba(0,0,0,.5);display:flex;flex-direction:column;overflow:hidden;color:#E9EDF3;position:relative">
+        <div style="background:#233B5D;flex:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 26px 0;font-family:var(--num-font);font-size:13px;font-weight:500;color:#E9EDF3">
+            <span>14:46</span>
+            <span style="display:flex;align-items:center;gap:5px">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E9EDF3" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"></path></svg>
+              <svg width="20" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="20" height="11" rx="3" stroke="#E9EDF3" stroke-width="1.5"></rect><rect x="3" y="3" width="12" height="7" rx="1.5" fill="#E9EDF3"></rect><rect x="23" y="4" width="2.4" height="5" rx="1.2" fill="#E9EDF3"></rect></svg>
+            </span>
+          </div>
+          <div style="display:flex;justify-content:center;padding:10px 0 2px">
+            <span style="display:flex;align-items:center;gap:7px;font-size:16px;font-weight:700;color:#E9EDF3">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E9EDF3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.4-6.5-10.2A6.5 6.5 0 0112 4.3a6.5 6.5 0 016.5 6.5C18.5 15.6 12 21 12 21z"></path><circle cx="12" cy="10.8" r="2.2"></circle></svg>
+              İzmir
+            </span>
+          </div>
+          <img src="assets/header-illo-dark.png" alt="" style="width:100%;display:block;margin-bottom:-1px">
+        </div>
+
+        <div style="padding:16px 26px 0;flex:none">
+          <div style="font-size:20px;font-weight:800;letter-spacing:-.01em">Ayarlar</div>
+        </div>
+
+        <div style="padding:14px 20px 0;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#6B7686;padding:0 6px">KONUM</div>
+            <div style="background:#1D2938;border:1px solid #283548;border-radius:20px;overflow:hidden">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px">
+                <span style="font-size:15px;font-weight:600">Şehir</span>
+                <span style="display:flex;align-items:center;gap:8px;font-size:15px;color:#93A0AF">
+                  İzmir
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7686" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"></path></svg>
+                </span>
+              </div>
+              <div style="height:1px;background:#263243;margin:0 20px"></div>
+              <div style="display:flex;align-items:center;gap:10px;padding:14px 20px;color:#E8536B;font-size:14.5px;font-weight:700">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="6.5"></circle><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"></circle><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"></path></svg>
+                Konumu kullan
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#6B7686;padding:0 6px">BİLDİRİMLER</div>
+            <div style="background:#1D2938;border:1px solid #283548;border-radius:20px;overflow:hidden">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:14px 20px 16px">
+                <span style="display:flex;flex-direction:column;gap:2px">
+                  <span style="font-size:15px;font-weight:600">Hatırlatma</span>
+                  <span style="font-size:12px;color:#7C8797">İftar ve imsaktan önce</span>
+                </span>
+                <span style="display:flex;align-items:center;gap:8px">
+                  <span style="display:flex;align-items:center;border:1px solid #2A3648;border-radius:100px">
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#93A0AF;font-size:16px;font-weight:600">−</span>
+                    <span style="min-width:46px;text-align:center;font-family:var(--num-font);font-size:12.5px;font-weight:600">1 sa</span>
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#E8536B;font-size:16px;font-weight:600">+</span>
+                  </span>
+                  <span style="display:flex;align-items:center;border:1px solid #2A3648;border-radius:100px">
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#93A0AF;font-size:16px;font-weight:600">−</span>
+                    <span style="min-width:46px;text-align:center;font-family:var(--num-font);font-size:12.5px;font-weight:600">30 dk</span>
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#E8536B;font-size:16px;font-weight:600">+</span>
+                  </span>
+                  <span style="font-size:12px;color:#7C8797">önce</span>
+                </span>
+              </div>
+              <div style="height:1px;background:#263243;margin:0 20px"></div>
+              <div style="display:flex;flex-direction:column;gap:10px;padding:14px 20px 16px">
+                <span style="display:flex;flex-direction:column;gap:2px">
+                  <span style="font-size:15px;font-weight:600">Geri sayım</span>
+                  <span style="font-size:12px;color:#7C8797">Bildirimde canlı sayaç</span>
+                </span>
+                <span style="display:flex;align-items:center;gap:8px">
+                  <span style="display:flex;align-items:center;border:1px solid #2A3648;border-radius:100px">
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#93A0AF;font-size:16px;font-weight:600">−</span>
+                    <span style="min-width:46px;text-align:center;font-family:var(--num-font);font-size:12.5px;font-weight:600">0 sa</span>
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#E8536B;font-size:16px;font-weight:600">+</span>
+                  </span>
+                  <span style="display:flex;align-items:center;border:1px solid #2A3648;border-radius:100px">
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#93A0AF;font-size:16px;font-weight:600">−</span>
+                    <span style="min-width:46px;text-align:center;font-family:var(--num-font);font-size:12.5px;font-weight:600">5 dk</span>
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#E8536B;font-size:16px;font-weight:600">+</span>
+                  </span>
+                  <span style="font-size:12px;color:#7C8797">önce</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#6B7686;padding:0 6px">GÖRÜNÜM</div>
+            <div style="background:#1D2938;border:1px solid #283548;border-radius:20px;padding:12px 14px">
+              <div style="display:flex;background:#263243;border-radius:100px;padding:4px">
+                <div style="flex:1;text-align:center;padding:8px 0;border-radius:100px;font-size:13px;font-weight:600;color:#7C8797">Gündüz</div>
+                <div style="flex:1;text-align:center;padding:8px 0;border-radius:100px;background:#2E3D52;box-shadow:0 2px 6px rgba(0,0,0,.3);font-size:13px;font-weight:700;color:#F2F5F9">Gece</div>
+                <div style="flex:1;text-align:center;padding:8px 0;border-radius:100px;font-size:13px;font-weight:600;color:#7C8797">Otomatik</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:auto;text-align:center;font-size:11px;color:#5C6675;padding-bottom:2px">v2.0.0 · Kaan Dönmez</div>
+
+        <div style="flex:none;padding:10px 24px 4px">
+          <div style="display: flex; align-items: center; background: #28374E; border-radius: 26px; padding: 6px; box-shadow: 0 12px 28px rgba(0,0,0,.45)">
+            <div style="flex:1;display:flex;justify-content:center;padding:10px 0;color:rgba(233,237,243,.5)">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 119.5 4 7 7 0 0020 14.5z"></path></svg>
+            </div>
+            <div style="flex:1;display:flex;justify-content:center;padding:10px 0;color:rgba(233,237,243,.5)">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"></circle><path d="M12 7.5V12l3 1.8"></path></svg>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; background: #0F1826; border-radius: 20px; padding: 10px 20px; color: #F2F5F9">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.4" fill="#28374E"></circle><circle cx="15" cy="16" r="2.4" fill="#28374E"></circle></svg>
+              <span style="font-size:12.5px;font-weight:700">Ayarlar</span>
+            </div>
+          </div>
+        </div>
+        <div style="width:112px;height:4px;border-radius:2px;background:#E9EDF3;opacity:.3;margin:6px auto 10px;flex:none"></div>
+      </div>
+    </div>
+
+
+  </div>
+  <p class="dv-next">Sonraki adım örnekleri: "gece illüstrasyonunun yüksek çözünürlüklüsünü yükledim, değiştir" · "otomatik tema geçişini prototiple"</p>
+</section>
+
+
+<section class="dv-turn" id="t3">
+  <div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Revize — scroll listeler, Dün açık, pill navbar, sa+dk stepper</span></div>
+  <p class="dv-note">İmsakiye'de Dün satırı eklendi; tablo başlığı sabit, günler listesi gerçekten kaydırılıyor (2 hafta veri). Vakitler'de Dün artık tam kart; kart listesi scroll. Alt bar yeni nesil koyu pill — seçili sekme rounded-rectangle içinde. Ayarlar'da hatırlatma ve geri sayım saat + dakika çözünürlüğünde.</p>
+  <div class="dv-opts">
+
+    <!-- ============ 3a — İMSAKİYE ============ -->
+    <div class="dv-opt" id="3a">
+      <div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>İmsakiye — Dün + kaydırılabilir günler</div>
+      <div data-screen-label="İmsakiye v3" style="width:412px;height:900px;background:#F7F4EF;border-radius:32px;border:1px solid #E3DDD1;box-shadow:0 16px 40px rgba(34,48,63,.12);display:flex;flex-direction:column;overflow:hidden;color:#22303F;position:relative">
+        <div style="background:#F0AE75;flex:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 26px 0;font-family:var(--num-font);font-size:13px;font-weight:500;color:#22303F">
+            <span>14:46</span>
+            <span style="display:flex;align-items:center;gap:5px">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"></path></svg>
+              <svg width="20" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="20" height="11" rx="3" stroke="#22303F" stroke-width="1.5"></rect><rect x="3" y="3" width="12" height="7" rx="1.5" fill="#22303F"></rect><rect x="23" y="4" width="2.4" height="5" rx="1.2" fill="#22303F"></rect></svg>
+            </span>
+          </div>
+          <div style="display:flex;justify-content:center;padding:10px 0 2px">
+            <span style="display:flex;align-items:center;gap:7px;font-size:16px;font-weight:700;color:#22303F">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.4-6.5-10.2A6.5 6.5 0 0112 4.3a6.5 6.5 0 016.5 6.5C18.5 15.6 12 21 12 21z"></path><circle cx="12" cy="10.8" r="2.2"></circle></svg>
+              İzmir
+            </span>
+          </div>
+          <img src="assets/header-illo.png" alt="" style="width:100%;display:block;margin-bottom:-1px">
+        </div>
+
+        <div style="display:flex;align-items:baseline;justify-content:space-between;padding:18px 26px 0;flex:none">
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <div style="font-size:17px;font-weight:700">7 Temmuz, Salı</div>
+            <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}">
+              <div style="font-size:12.5px;color:#98A1AE">22 Muharrem 1448</div>
+            </sc-if>
+          </div>
+          <div style="font-size:12.5px;font-weight:600;color:#98A1AE">Diyanet takvimi</div>
+        </div>
+
+        <div style="padding:18px 26px 20px;display:flex;flex-direction:column;gap:11px;flex:none">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.2em;color:#98A1AE">{{ countLabel }}</div>
+          <div style="font-family:var(--num-font);font-weight:300;font-size:52px;line-height:1;letter-spacing:-.02em;color:#22303F;font-variant-numeric:tabular-nums">{{ countdown }}</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
+            <div style="height:4px;border-radius:2px;background:#E7E1D5;position:relative">
+              <div style="position:absolute;left:0;top:0;bottom:0;width:64%;border-radius:2px;background:#C25A36;box-shadow:0 0 10px 1.5px rgba(194,90,54,.55)"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:12.5px">
+              <span style="color:#98A1AE">İmsak <span style="font-family:var(--num-font);font-weight:500;color:#68727F">03:59</span></span>
+              <span style="color:#98A1AE">İftar <span style="font-family:var(--num-font);font-weight:600;color:#C25A36">20:45</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin:0 20px;flex:1;min-height:0;display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #EBE5D9;border-radius:22px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;padding:15px 22px 9px;font-size:11px;font-weight:600;letter-spacing:.06em;color:#A9B1BC;border-bottom:1px solid #F0EBE1;flex:none">
+            <span></span><span>TEMMUZ</span><span style="text-align:right">İMSAK</span><span style="text-align:right">İFTAR</span>
+          </div>
+          <div data-hide-scrollbar="1" style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none">
+            <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:12px 22px;opacity:.42">
+              <span style="font-family:var(--num-font);font-size:13px;color:#68727F">21</span>
+              <span style="font-size:15px;font-weight:500;color:#3B4756">Dün</span>
+              <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">03:59</span>
+              <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">20:46</span>
+            </div>
+            <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:12px 22px;background:#FAEDE4">
+              <span style="font-family:var(--num-font);font-size:13px;color:#C25A36">22</span>
+              <span style="font-size:15px;font-weight:700;color:#22303F">Bugün</span>
+              <span style="font-family:var(--num-font);font-size:15px;font-weight:600;color:#C25A36;text-align:right">03:59</span>
+              <span style="font-family:var(--num-font);font-size:15px;font-weight:600;color:#C25A36;text-align:right">20:45</span>
+            </div>
+            <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:12px 22px">
+              <span style="font-family:var(--num-font);font-size:13px;color:#A9B1BC">23</span>
+              <span style="font-size:15px;font-weight:500;color:#3B4756">Yarın</span>
+              <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">04:00</span>
+              <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">20:45</span>
+            </div>
+            <sc-for list="{{ imsakRows }}" as="r" hint-placeholder-count="6">
+              <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:12px 22px">
+                <span style="font-family:var(--num-font);font-size:13px;color:#A9B1BC">{{ r.h }}</span>
+                <span style="font-size:15px;font-weight:500;color:#3B4756">{{ r.label }}</span>
+                <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">{{ r.imsak }}</span>
+                <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">{{ r.iftar }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="flex:none;padding:12px 24px 4px">
+          <div style="display: flex; align-items: center; background: #ffffff; border-radius: 26px; padding: 6px; box-shadow: 0 12px 28px rgba(34,48,63,.28)">
+            <div style="display: flex; align-items: center; gap: 8px; background: #F0EBE1; border-radius: 20px; padding: 10px 20px; color: #22303F">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 119.5 4 7 7 0 0020 14.5z"></path></svg>
+              <span style="font-size:12.5px;font-weight:700">İmsakiye</span>
+            </div>
+            <div style="flex:1;display:flex;justify-content:center;padding:10px 0;color:rgba(247,244,239,.55)">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"></circle><path d="M12 7.5V12l3 1.8"></path></svg>
+            </div>
+            <div style="flex:1;display:flex;justify-content:center;padding:10px 0;color:rgba(247,244,239,.55)">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="1.9" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.4" fill="#ffffff"></circle><circle cx="15" cy="16" r="2.4" fill="#ffffff"></circle></svg>
+            </div>
+          </div>
+        </div>
+        <div style="width:112px;height:4px;border-radius:2px;background:#22303F;opacity:.22;margin:6px auto 10px;flex:none"></div>
+      </div>
+    </div>
+
+    <!-- ============ 3b — NAMAZ VAKİTLERİ ============ -->
+    <div class="dv-opt" id="3b">
+      <div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a>Namaz Vakitleri — Dün tam kart, scroll liste</div>
+      <div data-screen-label="Namaz Vakitleri v3" style="width:412px;height:900px;background:#F7F4EF;border-radius:32px;border:1px solid #E3DDD1;box-shadow:0 16px 40px rgba(34,48,63,.12);display:flex;flex-direction:column;overflow:hidden;color:#22303F;position:relative">
+        <div style="background:#F0AE75;flex:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 26px 0;font-family:var(--num-font);font-size:13px;font-weight:500;color:#22303F">
+            <span>14:46</span>
+            <span style="display:flex;align-items:center;gap:5px">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"></path></svg>
+              <svg width="20" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="20" height="11" rx="3" stroke="#22303F" stroke-width="1.5"></rect><rect x="3" y="3" width="12" height="7" rx="1.5" fill="#22303F"></rect><rect x="23" y="4" width="2.4" height="5" rx="1.2" fill="#22303F"></rect></svg>
+            </span>
+          </div>
+          <div style="display:flex;justify-content:center;padding:10px 0 2px">
+            <span style="display:flex;align-items:center;gap:7px;font-size:16px;font-weight:700;color:#22303F">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.4-6.5-10.2A6.5 6.5 0 0112 4.3a6.5 6.5 0 016.5 6.5C18.5 15.6 12 21 12 21z"></path><circle cx="12" cy="10.8" r="2.2"></circle></svg>
+              İzmir
+            </span>
+          </div>
+          <img src="assets/header-illo.png" alt="" style="width:100%;display:block;margin-bottom:-1px">
+        </div>
+
+        <div style="display:flex;align-items:baseline;justify-content:space-between;padding:16px 26px 4px;flex:none">
+          <div style="font-size:20px;font-weight:800;letter-spacing:-.01em">Namaz Vakitleri</div>
+          <div style="font-size:12px;font-weight:600;color:#98A1AE">Temmuz 2026</div>
+        </div>
+
+        <div data-hide-scrollbar="1" style="flex:1;min-height:0;overflow-y:auto;scrollbar-width:none;padding:10px 20px 8px;display:flex;flex-direction:column;gap:10px">
+          <div style="flex:none;background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden;opacity:.5">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 6px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#3B4756">6 Temmuz, Pazartesi</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#98A1AE">21 Muharrem</span></sc-if>
+              </span>
+              <span style="font-size:11px;font-weight:700;color:#98A1AE">DÜN</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 10px 10px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">03:59</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">05:47</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">13:21</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">20:46</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">22:26</span></span>
+            </div>
+          </div>
+
+          <div style="flex:none;background:#FFFFFF;border:1.5px solid #E8B08A;border-radius:20px;overflow:hidden;box-shadow:0 6px 18px rgba(194,90,54,.10)">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px 12px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:16px;font-weight:700">7 Temmuz, Salı</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#98A1AE">22 Muharrem</span></sc-if>
+              </span>
+              <span style="font-size:11px;font-weight:700;letter-spacing:.04em;background:#C25A36;color:#FFF7F2;border-radius:100px;padding:4px 10px">BUGÜN</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 14px 16px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:12px;background:#FBF9F4;opacity:.45"><span style="font-size:11px;font-weight:600;color:#A9B1BC">İmsak</span><span style="font-family:var(--num-font);font-size:17px;font-weight:400;color:#22303F">03:59</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:12px;background:#FBF9F4;opacity:.45"><span style="font-size:11px;font-weight:600;color:#A9B1BC">Güneş</span><span style="font-family:var(--num-font);font-size:17px;font-weight:400;color:#22303F">05:47</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:12px;background:#FBF9F4;opacity:.45"><span style="font-size:11px;font-weight:600;color:#A9B1BC">Öğle</span><span style="font-family:var(--num-font);font-size:17px;font-weight:400;color:#22303F">13:21</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:12px;background:#FAEDE4;outline:1.5px solid #E8B08A;outline-offset:-1.5px"><span style="font-size:11px;font-weight:700;color:#C25A36">İkindi</span><span style="font-family:var(--num-font);font-size:17px;font-weight:600;color:#C25A36">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:12px;background:#FBF9F4"><span style="font-size:11px;font-weight:600;color:#A9B1BC">Akşam</span><span style="font-family:var(--num-font);font-size:17px;font-weight:600;color:#22303F">20:45</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:12px;background:#FBF9F4"><span style="font-size:11px;font-weight:600;color:#A9B1BC">Yatsı</span><span style="font-family:var(--num-font);font-size:17px;font-weight:600;color:#22303F">22:25</span></span>
+            </div>
+          </div>
+
+          <div style="flex:none;background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 6px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#3B4756">8 Temmuz, Çarşamba</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#98A1AE">23 Muharrem</span></sc-if>
+              </span>
+              <span style="font-size:11px;font-weight:700;color:#98A1AE">YARIN</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 10px 10px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">04:00</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">05:48</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">13:22</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">20:45</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">22:25</span></span>
+            </div>
+          </div>
+
+          <div style="flex:none;background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 6px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#3B4756">9 Temmuz, Perşembe</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#98A1AE">24 Muharrem</span></sc-if>
+              </span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 10px 10px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">04:01</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">05:49</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">13:22</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">20:45</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">22:24</span></span>
+            </div>
+          </div>
+
+          <div style="flex:none;background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 6px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#3B4756">10 Temmuz, Cuma</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#98A1AE">25 Muharrem</span></sc-if>
+              </span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 10px 10px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">04:02</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">05:49</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">13:22</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">20:44</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">22:24</span></span>
+            </div>
+          </div>
+
+          <div style="flex:none;background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 6px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#3B4756">11 Temmuz, Cumartesi</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#98A1AE">26 Muharrem</span></sc-if>
+              </span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 10px 10px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">04:03</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">05:50</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">13:22</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">20:44</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">22:23</span></span>
+            </div>
+          </div>
+
+          <div style="flex:none;background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 6px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#3B4756">12 Temmuz, Pazar</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#98A1AE">27 Muharrem</span></sc-if>
+              </span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 10px 10px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">04:04</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">05:51</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">13:22</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">17:16</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">20:44</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:10px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">22:22</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:none;padding:12px 24px 4px">
+          <div style="display: flex; align-items: center; background: #ffffff; border-radius: 26px; padding: 6px; box-shadow: 0 12px 28px rgba(34,48,63,.28)">
+            <div style="flex:1;display:flex;justify-content:center;padding:10px 0;color:rgba(247,244,239,.55)">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 119.5 4 7 7 0 0020 14.5z"></path></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;background:#F7F4EF;border-radius:20px;padding:10px 20px;color:#22303F">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"></circle><path d="M12 7.5V12l3 1.8"></path></svg>
+              <span style="font-size:12.5px;font-weight:700">Vakitler</span>
+            </div>
+            <div style="flex:1;display:flex;justify-content:center;padding:10px 0;color:rgba(247,244,239,.55)">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="1.9" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.4" fill="#ffffff"></circle><circle cx="15" cy="16" r="2.4" fill="#ffffff"></circle></svg>
+            </div>
+          </div>
+        </div>
+        <div style="width:112px;height:4px;border-radius:2px;background:#22303F;opacity:.22;margin:6px auto 10px;flex:none"></div>
+      </div>
+    </div>
+
+    <!-- ============ 3c — AYARLAR ============ -->
+    <div class="dv-opt" id="3c">
+      <div class="dv-olabel"><a class="dv-oid" href="#3c">3c</a>Ayarlar — saat + dakika çözünürlüğü</div>
+      <div data-screen-label="Ayarlar v3" style="width:412px;height:900px;background:#F7F4EF;border-radius:32px;border:1px solid #E3DDD1;box-shadow:0 16px 40px rgba(34,48,63,.12);display:flex;flex-direction:column;overflow:hidden;color:#22303F;position:relative">
+        <div style="background:#F0AE75;flex:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 26px 0;font-family:var(--num-font);font-size:13px;font-weight:500;color:#22303F">
+            <span>14:46</span>
+            <span style="display:flex;align-items:center;gap:5px">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"></path></svg>
+              <svg width="20" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="20" height="11" rx="3" stroke="#22303F" stroke-width="1.5"></rect><rect x="3" y="3" width="12" height="7" rx="1.5" fill="#22303F"></rect><rect x="23" y="4" width="2.4" height="5" rx="1.2" fill="#22303F"></rect></svg>
+            </span>
+          </div>
+          <div style="display:flex;justify-content:center;padding:10px 0 2px">
+            <span style="display:flex;align-items:center;gap:7px;font-size:16px;font-weight:700;color:#22303F">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.4-6.5-10.2A6.5 6.5 0 0112 4.3a6.5 6.5 0 016.5 6.5C18.5 15.6 12 21 12 21z"></path><circle cx="12" cy="10.8" r="2.2"></circle></svg>
+              İzmir
+            </span>
+          </div>
+          <img src="assets/header-illo.png" alt="" style="width:100%;display:block;margin-bottom:-1px">
+        </div>
+
+        <div style="padding:16px 26px 0;flex:none">
+          <div style="font-size:20px;font-weight:800;letter-spacing:-.01em">Ayarlar</div>
+        </div>
+
+        <div style="padding:14px 20px 0;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#A9B1BC;padding:0 6px">KONUM</div>
+            <div style="background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px">
+                <span style="font-size:15px;font-weight:600">Şehir</span>
+                <span style="display:flex;align-items:center;gap:8px;font-size:15px;color:#68727F">
+                  İzmir
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A9B1BC" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"></path></svg>
+                </span>
+              </div>
+              <div style="height:1px;background:#F0EBE1;margin:0 20px"></div>
+              <div style="display:flex;align-items:center;gap:10px;padding:14px 20px;color:#C25A36;font-size:14.5px;font-weight:700">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="6.5"></circle><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"></circle><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"></path></svg>
+                Konumu kullan
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#A9B1BC;padding:0 6px">BİLDİRİMLER</div>
+            <div style="background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:14px 20px 16px">
+                <span style="display:flex;flex-direction:column;gap:2px">
+                  <span style="font-size:15px;font-weight:600">Hatırlatma</span>
+                  <span style="font-size:12px;color:#98A1AE">İftar ve imsaktan önce</span>
+                </span>
+                <span style="display:flex;align-items:center;gap:8px">
+                  <span style="display:flex;align-items:center;border:1px solid #E3DDD1;border-radius:100px">
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#68727F;font-size:16px;font-weight:600">−</span>
+                    <span style="min-width:46px;text-align:center;font-family:var(--num-font);font-size:12.5px;font-weight:600">1 sa</span>
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#C25A36;font-size:16px;font-weight:600">+</span>
+                  </span>
+                  <span style="display:flex;align-items:center;border:1px solid #E3DDD1;border-radius:100px">
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#68727F;font-size:16px;font-weight:600">−</span>
+                    <span style="min-width:46px;text-align:center;font-family:var(--num-font);font-size:12.5px;font-weight:600">30 dk</span>
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#C25A36;font-size:16px;font-weight:600">+</span>
+                  </span>
+                  <span style="font-size:12px;color:#98A1AE">önce</span>
+                </span>
+              </div>
+              <div style="height:1px;background:#F0EBE1;margin:0 20px"></div>
+              <div style="display:flex;flex-direction:column;gap:10px;padding:14px 20px 16px">
+                <span style="display:flex;flex-direction:column;gap:2px">
+                  <span style="font-size:15px;font-weight:600">Geri sayım</span>
+                  <span style="font-size:12px;color:#98A1AE">Bildirimde canlı sayaç</span>
+                </span>
+                <span style="display:flex;align-items:center;gap:8px">
+                  <span style="display:flex;align-items:center;border:1px solid #E3DDD1;border-radius:100px">
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#68727F;font-size:16px;font-weight:600">−</span>
+                    <span style="min-width:46px;text-align:center;font-family:var(--num-font);font-size:12.5px;font-weight:600">0 sa</span>
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#C25A36;font-size:16px;font-weight:600">+</span>
+                  </span>
+                  <span style="display:flex;align-items:center;border:1px solid #E3DDD1;border-radius:100px">
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#68727F;font-size:16px;font-weight:600">−</span>
+                    <span style="min-width:46px;text-align:center;font-family:var(--num-font);font-size:12.5px;font-weight:600">5 dk</span>
+                    <span style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:#C25A36;font-size:16px;font-weight:600">+</span>
+                  </span>
+                  <span style="font-size:12px;color:#98A1AE">önce</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#A9B1BC;padding:0 6px">GÖRÜNÜM</div>
+            <div style="background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;padding:12px 14px">
+              <div style="display:flex;background:#F0EBE1;border-radius:100px;padding:4px">
+                <div style="flex:1;text-align:center;padding:8px 0;border-radius:100px;background:#FFFFFF;box-shadow:0 2px 6px rgba(34,48,63,.10);font-size:13px;font-weight:700;color:#22303F">Gündüz</div>
+                <div style="flex:1;text-align:center;padding:8px 0;border-radius:100px;font-size:13px;font-weight:600;color:#98A1AE">Gece</div>
+                <div style="flex:1;text-align:center;padding:8px 0;border-radius:100px;font-size:13px;font-weight:600;color:#98A1AE">Otomatik</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:auto;text-align:center;font-size:11px;color:#B6BDC7;padding-bottom:2px">v2.0.0 · Kaan Dönmez</div>
+
+        <div style="flex:none;padding:10px 24px 4px">
+          <div style="display: flex; align-items: center; background: #ffffff; border-radius: 26px; padding: 6px; box-shadow: 0 12px 28px rgba(34,48,63,.28)">
+            <div style="flex:1;display:flex;justify-content:center;padding:10px 0;color:rgba(247,244,239,.55)">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 119.5 4 7 7 0 0020 14.5z"></path></svg>
+            </div>
+            <div style="flex:1;display:flex;justify-content:center;padding:10px 0;color:rgba(247,244,239,.55)">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"></circle><path d="M12 7.5V12l3 1.8"></path></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;background:#F7F4EF;border-radius:20px;padding:10px 20px;color:#22303F">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.4" fill="#F7F4EF"></circle><circle cx="15" cy="16" r="2.4" fill="#F7F4EF"></circle></svg>
+              <span style="font-size:12.5px;font-weight:700">Ayarlar</span>
+            </div>
+          </div>
+        </div>
+        <div style="width:112px;height:4px;border-radius:2px;background:#22303F;opacity:.22;margin:6px auto 10px;flex:none"></div>
+      </div>
+    </div>
+
+
+  </div>
+  <p class="dv-next">Sonraki adım örnekleri: "gece temasını tasarla" · "<a class="dv-oid" href="#3c">3c</a>'de stepper yerine süre seçici dene" · "PNG illüstrasyonun yüksek çözünürlüklüsünü yükledim, değiştir"</p>
+</section>
+
+<section class="dv-turn" id="t2">
+  <div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Revize — illüstrasyon başlık geri geldi, Vakitler çok günlü</span></div>
+  <p class="dv-note">Orijinal illüstrasyon bandı her ekranın tepesinde; konum rozeti orijinaldeki gibi ortada. Vakitler artık gün gün kart listesi: Dün tek satıra sıkıştı, Bugün vurgulu, sonraki günler tam kart. İçerik dili turn 1 ile aynı (tek terracotta accent, mono saatler).</p>
+  <div class="dv-opts">
+
+    <!-- ============ 2a — İMSAKİYE ============ -->
+    <div class="dv-opt" id="2a">
+      <div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>İmsakiye — illüstrasyonlu başlık</div>
+      <div data-screen-label="İmsakiye v2" style="width:412px;height:900px;background:#F7F4EF;border-radius:32px;border:1px solid #E3DDD1;box-shadow:0 16px 40px rgba(34,48,63,.12);display:flex;flex-direction:column;overflow:hidden;color:#22303F;position:relative">
+        <div style="background:#F0AE75;flex:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 26px 0;font-family:var(--num-font);font-size:13px;font-weight:500;color:#22303F">
+            <span>14:46</span>
+            <span style="display:flex;align-items:center;gap:5px">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"></path></svg>
+              <svg width="20" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="20" height="11" rx="3" stroke="#22303F" stroke-width="1.5"></rect><rect x="3" y="3" width="12" height="7" rx="1.5" fill="#22303F"></rect><rect x="23" y="4" width="2.4" height="5" rx="1.2" fill="#22303F"></rect></svg>
+            </span>
+          </div>
+          <div style="display:flex;justify-content:center;padding:10px 0 2px">
+            <span style="display:flex;align-items:center;gap:7px;font-size:16px;font-weight:700;color:#22303F">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.4-6.5-10.2A6.5 6.5 0 0112 4.3a6.5 6.5 0 016.5 6.5C18.5 15.6 12 21 12 21z"></path><circle cx="12" cy="10.8" r="2.2"></circle></svg>
+              İzmir
+            </span>
+          </div>
+          <img src="assets/header-illo.png" alt="" style="width:100%;display:block;margin-bottom:-1px">
+        </div>
+
+        <div style="display:flex;align-items:baseline;justify-content:space-between;padding:20px 26px 0">
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <div style="font-size:17px;font-weight:700">7 Temmuz, Salı</div>
+            <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}">
+              <div style="font-size:12.5px;color:#98A1AE">22 Muharrem 1448</div>
+            </sc-if>
+          </div>
+          <div style="font-size:12.5px;font-weight:600;color:#98A1AE">Diyanet takvimi</div>
+        </div>
+
+        <div style="padding:22px 26px 24px;display:flex;flex-direction:column;gap:12px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.2em;color:#98A1AE">{{ countLabel }}</div>
+          <div style="font-family:var(--num-font);font-weight:300;font-size:54px;line-height:1;letter-spacing:-.02em;color:#22303F;font-variant-numeric:tabular-nums">{{ countdown }}</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-top:6px">
+            <div style="height:4px;border-radius:2px;background:#E7E1D5;position:relative;overflow:hidden">
+              <div style="position:absolute;left:0;top:0;bottom:0;width:64%;border-radius:2px;background:#C25A36"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:12.5px">
+              <span style="color:#98A1AE">İmsak <span style="font-family:var(--num-font);font-weight:500;color:#68727F">03:59</span></span>
+              <span style="color:#98A1AE">İftar <span style="font-family:var(--num-font);font-weight:600;color:#C25A36">20:45</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin:0 20px;background:#FFFFFF;border:1px solid #EBE5D9;border-radius:22px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;padding:15px 22px 7px;font-size:11px;font-weight:600;letter-spacing:.06em;color:#A9B1BC">
+            <span></span><span>TEMMUZ</span><span style="text-align:right">İMSAK</span><span style="text-align:right">İFTAR</span>
+          </div>
+          <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:12px 22px;background:#FAEDE4">
+            <span style="font-family:var(--num-font);font-size:13px;color:#C25A36">22</span>
+            <span style="font-size:15px;font-weight:700;color:#22303F">Bugün</span>
+            <span style="font-family:var(--num-font);font-size:15px;font-weight:600;color:#C25A36;text-align:right">03:59</span>
+            <span style="font-family:var(--num-font);font-size:15px;font-weight:600;color:#C25A36;text-align:right">20:45</span>
+          </div>
+          <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:12px 22px">
+            <span style="font-family:var(--num-font);font-size:13px;color:#A9B1BC">23</span>
+            <span style="font-size:15px;font-weight:500;color:#3B4756">Yarın</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">04:00</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">20:45</span>
+          </div>
+          <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:12px 22px">
+            <span style="font-family:var(--num-font);font-size:13px;color:#A9B1BC">24</span>
+            <span style="font-size:15px;font-weight:500;color:#3B4756">Perşembe</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">04:01</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">20:45</span>
+          </div>
+          <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:12px 22px">
+            <span style="font-family:var(--num-font);font-size:13px;color:#A9B1BC">25</span>
+            <span style="font-size:15px;font-weight:500;color:#3B4756">Cuma</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">04:02</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">20:44</span>
+          </div>
+        </div>
+
+        <div style="margin-top:auto;display:flex;border-top:1px solid #EBE5D9;background:#FCFAF5;padding:10px 12px 0">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#C25A36">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 119.5 4 7 7 0 0020 14.5z"></path></svg>
+            <span style="font-size:11px;font-weight:700">İmsakiye</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#A9B1BC">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"></circle><path d="M12 7.5V12l3 1.8"></path></svg>
+            <span style="font-size:11px;font-weight:600">Vakitler</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#A9B1BC">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.4" fill="#F7F4EF"></circle><circle cx="15" cy="16" r="2.4" fill="#F7F4EF"></circle></svg>
+            <span style="font-size:11px;font-weight:600">Ayarlar</span>
+          </div>
+        </div>
+        <div style="width:112px;height:4px;border-radius:2px;background:#22303F;opacity:.22;margin:8px auto 10px;flex:none"></div>
+      </div>
+    </div>
+
+    <!-- ============ 2b — NAMAZ VAKİTLERİ (çok günlü) ============ -->
+    <div class="dv-opt" id="2b">
+      <div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Namaz Vakitleri — gün gün kartlar</div>
+      <div data-screen-label="Namaz Vakitleri v2" style="width:412px;height:900px;background:#F7F4EF;border-radius:32px;border:1px solid #E3DDD1;box-shadow:0 16px 40px rgba(34,48,63,.12);display:flex;flex-direction:column;overflow:hidden;color:#22303F;position:relative">
+        <div style="background:#F0AE75;flex:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 26px 0;font-family:var(--num-font);font-size:13px;font-weight:500;color:#22303F">
+            <span>14:46</span>
+            <span style="display:flex;align-items:center;gap:5px">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"></path></svg>
+              <svg width="20" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="20" height="11" rx="3" stroke="#22303F" stroke-width="1.5"></rect><rect x="3" y="3" width="12" height="7" rx="1.5" fill="#22303F"></rect><rect x="23" y="4" width="2.4" height="5" rx="1.2" fill="#22303F"></rect></svg>
+            </span>
+          </div>
+          <div style="display:flex;justify-content:center;padding:10px 0 2px">
+            <span style="display:flex;align-items:center;gap:7px;font-size:16px;font-weight:700;color:#22303F">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.4-6.5-10.2A6.5 6.5 0 0112 4.3a6.5 6.5 0 016.5 6.5C18.5 15.6 12 21 12 21z"></path><circle cx="12" cy="10.8" r="2.2"></circle></svg>
+              İzmir
+            </span>
+          </div>
+          <img src="assets/header-illo.png" alt="" style="width:100%;display:block;margin-bottom:-1px">
+        </div>
+
+        <div style="display:flex;align-items:baseline;justify-content:space-between;padding:18px 26px 0">
+          <div style="font-size:20px;font-weight:800;letter-spacing:-.01em">Namaz Vakitleri</div>
+          <div style="font-size:12px;font-weight:600;color:#98A1AE">Temmuz 2026</div>
+        </div>
+
+        <div style="padding:14px 20px 0;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border:1px dashed #E0D9CC;border-radius:14px;color:#A9B1BC;font-size:12.5px">
+            <span style="font-weight:600">Dün · 6 Temmuz</span>
+            <span style="font-family:var(--num-font)">İmsak 03:59 · Akşam 20:46</span>
+          </div>
+
+          <div style="background:#FFFFFF;border:1.5px solid #E8B08A;border-radius:20px;overflow:hidden;box-shadow:0 6px 18px rgba(194,90,54,.10)">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700">7 Temmuz, Salı</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#98A1AE">22 Muharrem</span></sc-if>
+              </span>
+              <span style="font-size:11px;font-weight:700;letter-spacing:.04em;background:#C25A36;color:#FFF7F2;border-radius:100px;padding:4px 10px">BUGÜN</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 14px 14px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İmsak</span><span style="font-family:var(--num-font);font-size:13px;font-weight:600;color:#22303F">03:59</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Güneş</span><span style="font-family:var(--num-font);font-size:13px;font-weight:600;color:#22303F">05:47</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Öğle</span><span style="font-family:var(--num-font);font-size:13px;font-weight:600;color:#22303F">13:21</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px;background:#FAEDE4;border-radius:10px;padding:4px 0;margin:-4px 2px"><span style="font-size:10px;font-weight:700;color:#C25A36">İkindi</span><span style="font-family:var(--num-font);font-size:13px;font-weight:600;color:#C25A36">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Akşam</span><span style="font-family:var(--num-font);font-size:13px;font-weight:600;color:#22303F">20:45</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;font-weight:600;color:#22303F">22:25</span></span>
+            </div>
+          </div>
+
+          <div style="background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#3B4756">8 Temmuz, Çarşamba</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#98A1AE">23 Muharrem</span></sc-if>
+              </span>
+              <span style="font-size:11px;font-weight:700;color:#98A1AE">YARIN</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 14px 14px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">04:00</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">05:48</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">13:22</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">20:45</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">22:25</span></span>
+            </div>
+          </div>
+
+          <div style="background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#3B4756">9 Temmuz, Perşembe</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#98A1AE">24 Muharrem</span></sc-if>
+              </span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 14px 14px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">04:01</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">05:49</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">13:22</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">20:45</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">22:24</span></span>
+            </div>
+          </div>
+
+          <div style="background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px">
+              <span style="display:flex;align-items:baseline;gap:8px">
+                <span style="font-size:15.5px;font-weight:700;color:#3B4756">10 Temmuz, Cuma</span>
+                <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}"><span style="font-size:11.5px;color:#98A1AE">25 Muharrem</span></sc-if>
+              </span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);padding:0 14px 14px">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İmsak</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">04:02</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Güneş</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">05:49</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Öğle</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">13:22</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">İkindi</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">17:15</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Akşam</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">20:44</span></span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-size:10px;font-weight:600;color:#A9B1BC">Yatsı</span><span style="font-family:var(--num-font);font-size:13px;color:#3B4756">22:24</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:auto;display:flex;border-top:1px solid #EBE5D9;background:#FCFAF5;padding:10px 12px 0">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#A9B1BC">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 119.5 4 7 7 0 0020 14.5z"></path></svg>
+            <span style="font-size:11px;font-weight:600">İmsakiye</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#C25A36">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"></circle><path d="M12 7.5V12l3 1.8"></path></svg>
+            <span style="font-size:11px;font-weight:700">Vakitler</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#A9B1BC">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.4" fill="#F7F4EF"></circle><circle cx="15" cy="16" r="2.4" fill="#F7F4EF"></circle></svg>
+            <span style="font-size:11px;font-weight:600">Ayarlar</span>
+          </div>
+        </div>
+        <div style="width:112px;height:4px;border-radius:2px;background:#22303F;opacity:.22;margin:8px auto 10px;flex:none"></div>
+      </div>
+    </div>
+
+    <!-- ============ 2c — AYARLAR ============ -->
+    <div class="dv-opt" id="2c">
+      <div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Ayarlar — illüstrasyonlu başlık</div>
+      <div data-screen-label="Ayarlar v2" style="width:412px;height:900px;background:#F7F4EF;border-radius:32px;border:1px solid #E3DDD1;box-shadow:0 16px 40px rgba(34,48,63,.12);display:flex;flex-direction:column;overflow:hidden;color:#22303F;position:relative">
+        <div style="background:#F0AE75;flex:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 26px 0;font-family:var(--num-font);font-size:13px;font-weight:500;color:#22303F">
+            <span>14:46</span>
+            <span style="display:flex;align-items:center;gap:5px">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"></path></svg>
+              <svg width="20" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="20" height="11" rx="3" stroke="#22303F" stroke-width="1.5"></rect><rect x="3" y="3" width="12" height="7" rx="1.5" fill="#22303F"></rect><rect x="23" y="4" width="2.4" height="5" rx="1.2" fill="#22303F"></rect></svg>
+            </span>
+          </div>
+          <div style="display:flex;justify-content:center;padding:10px 0 2px">
+            <span style="display:flex;align-items:center;gap:7px;font-size:16px;font-weight:700;color:#22303F">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.4-6.5-10.2A6.5 6.5 0 0112 4.3a6.5 6.5 0 016.5 6.5C18.5 15.6 12 21 12 21z"></path><circle cx="12" cy="10.8" r="2.2"></circle></svg>
+              İzmir
+            </span>
+          </div>
+          <img src="assets/header-illo.png" alt="" style="width:100%;display:block;margin-bottom:-1px">
+        </div>
+
+        <div style="padding:18px 26px 0">
+          <div style="font-size:20px;font-weight:800;letter-spacing:-.01em">Ayarlar</div>
+        </div>
+
+        <div style="padding:16px 20px 0;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#A9B1BC;padding:0 6px">KONUM</div>
+            <div style="background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:15px 20px">
+                <span style="font-size:15px;font-weight:600">Şehir</span>
+                <span style="display:flex;align-items:center;gap:8px;font-size:15px;color:#68727F">
+                  İzmir
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A9B1BC" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"></path></svg>
+                </span>
+              </div>
+              <div style="height:1px;background:#F0EBE1;margin:0 20px"></div>
+              <div style="display:flex;align-items:center;gap:10px;padding:15px 20px;color:#C25A36;font-size:14.5px;font-weight:700">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="6.5"></circle><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"></circle><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"></path></svg>
+                Konumu kullan
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#A9B1BC;padding:0 6px">BİLDİRİMLER</div>
+            <div style="background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px">
+                <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                  <span style="font-size:15px;font-weight:600">Hatırlatma</span>
+                  <span style="font-size:12px;color:#98A1AE">İftar ve imsaktan önce</span>
+                </span>
+                <span style="display:flex;align-items:center;border:1px solid #E3DDD1;border-radius:100px;flex:none">
+                  <span style="width:36px;height:34px;display:flex;align-items:center;justify-content:center;color:#68727F;font-size:17px;font-weight:600">−</span>
+                  <span style="min-width:52px;text-align:center;font-family:var(--num-font);font-size:13px;font-weight:600">1 sa</span>
+                  <span style="width:36px;height:34px;display:flex;align-items:center;justify-content:center;color:#C25A36;font-size:17px;font-weight:600">+</span>
+                </span>
+              </div>
+              <div style="height:1px;background:#F0EBE1;margin:0 20px"></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px">
+                <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                  <span style="font-size:15px;font-weight:600">Geri sayım</span>
+                  <span style="font-size:12px;color:#98A1AE">Bildirimde canlı sayaç</span>
+                </span>
+                <span style="display:flex;align-items:center;border:1px solid #E3DDD1;border-radius:100px;flex:none">
+                  <span style="width:36px;height:34px;display:flex;align-items:center;justify-content:center;color:#68727F;font-size:17px;font-weight:600">−</span>
+                  <span style="min-width:52px;text-align:center;font-family:var(--num-font);font-size:13px;font-weight:600">5 dk</span>
+                  <span style="width:36px;height:34px;display:flex;align-items:center;justify-content:center;color:#C25A36;font-size:17px;font-weight:600">+</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#A9B1BC;padding:0 6px">GÖRÜNÜM</div>
+            <div style="background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;padding:12px 14px">
+              <div style="display:flex;background:#F0EBE1;border-radius:100px;padding:4px">
+                <div style="flex:1;text-align:center;padding:8px 0;border-radius:100px;background:#FFFFFF;box-shadow:0 2px 6px rgba(34,48,63,.10);font-size:13px;font-weight:700;color:#22303F">Gündüz</div>
+                <div style="flex:1;text-align:center;padding:8px 0;border-radius:100px;font-size:13px;font-weight:600;color:#98A1AE">Gece</div>
+                <div style="flex:1;text-align:center;padding:8px 0;border-radius:100px;font-size:13px;font-weight:600;color:#98A1AE">Otomatik</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:auto;text-align:center;font-size:11px;color:#B6BDC7;padding-bottom:12px">v1.1.1 · Kaan Dönmez</div>
+
+        <div style="display:flex;border-top:1px solid #EBE5D9;background:#FCFAF5;padding:10px 12px 0">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#A9B1BC">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 119.5 4 7 7 0 0020 14.5z"></path></svg>
+            <span style="font-size:11px;font-weight:600">İmsakiye</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#A9B1BC">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"></circle><path d="M12 7.5V12l3 1.8"></path></svg>
+            <span style="font-size:11px;font-weight:600">Vakitler</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#C25A36">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.4" fill="#F7F4EF"></circle><circle cx="15" cy="16" r="2.4" fill="#F7F4EF"></circle></svg>
+            <span style="font-size:11px;font-weight:700">Ayarlar</span>
+          </div>
+        </div>
+        <div style="width:112px;height:4px;border-radius:2px;background:#22303F;opacity:.22;margin:8px auto 10px;flex:none"></div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">Sonraki adım örnekleri: "<a class="dv-oid" href="#2b">2b</a>'de daha fazla gün göster, ekran kaydırılsın" · "illüstrasyonu gece temasına uyarla" · "<a class="dv-oid" href="#2a">2a</a>'daki tabloyu <a class="dv-oid" href="#2b">2b</a>'deki kart stiline çevir"</p>
+</section>
+
+<section class="dv-turn" id="t1">
+  <div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">İmsakiye — Day teması, minimalist yeniden tasarım</span></div>
+  <p class="dv-note">Yaklaşım: tek accent (terracotta) yalnızca "şimdi önemli olan" bilgide — geri sayım, bugün, sıradaki vakit. Diğer her şey mürekkep lacivert + sıcak kâğıt zemin. Saatler eş genişlikli (mono) yazıyla, geri sayım canlı akıyor. Navigasyon 3 ekranda da aynı sabit bar. "Konumu kullan" navigasyondan çıkıp Ayarlar'da aksiyona dönüştü.</p>
+  <div class="dv-opts">
+
+    <!-- ============ 1a — İMSAKİYE (ana ekran) ============ -->
+    <div class="dv-opt" id="1a">
+      <div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>İmsakiye — canlı geri sayım</div>
+      <div data-screen-label="İmsakiye" style="width:412px;height:900px;background:#F7F4EF;border-radius:32px;border:1px solid #E3DDD1;box-shadow:0 16px 40px rgba(34,48,63,.12);display:flex;flex-direction:column;overflow:hidden;color:#22303F;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 26px 0;font-family:var(--num-font);font-size:13px;font-weight:500">
+          <span>14:46</span>
+          <span style="display:flex;align-items:center;gap:5px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"></path></svg>
+            <svg width="20" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="20" height="11" rx="3" stroke="#22303F" stroke-width="1.5"></rect><rect x="3" y="3" width="12" height="7" rx="1.5" fill="#22303F"></rect><rect x="23" y="4" width="2.4" height="5" rx="1.2" fill="#22303F"></rect></svg>
+          </span>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:22px 26px 0">
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <div style="font-size:17px;font-weight:700">7 Temmuz, Salı</div>
+            <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}">
+              <div style="font-size:12.5px;color:#98A1AE">22 Muharrem 1448</div>
+            </sc-if>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;background:#FFFFFF;border:1px solid #E3DDD1;border-radius:100px;padding:8px 14px;font-size:13px;font-weight:600">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C25A36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.4-6.5-10.2A6.5 6.5 0 0112 4.3a6.5 6.5 0 016.5 6.5C18.5 15.6 12 21 12 21z"></path><circle cx="12" cy="10.8" r="2.2"></circle></svg>
+            İzmir
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#98A1AE" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+          </div>
+        </div>
+
+        <div style="padding:34px 26px 30px;display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.2em;color:#98A1AE">{{ countLabel }}</div>
+          <div style="font-family:var(--num-font);font-weight:300;font-size:58px;line-height:1;letter-spacing:-.02em;color:#22303F;font-variant-numeric:tabular-nums">{{ countdown }}</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-top:8px">
+            <div style="height:4px;border-radius:2px;background:#E7E1D5;position:relative;overflow:hidden">
+              <div style="position:absolute;left:0;top:0;bottom:0;width:64%;border-radius:2px;background:#C25A36"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:12.5px">
+              <span style="color:#98A1AE">İmsak <span style="font-family:var(--num-font);font-weight:500;color:#68727F">03:59</span></span>
+              <span style="color:#98A1AE">İftar <span style="font-family:var(--num-font);font-weight:600;color:#C25A36">20:45</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin:0 20px;background:#FFFFFF;border:1px solid #EBE5D9;border-radius:22px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;padding:16px 22px 8px;font-size:11px;font-weight:600;letter-spacing:.06em;color:#A9B1BC">
+            <span></span><span>TEMMUZ</span><span style="text-align:right">İMSAK</span><span style="text-align:right">İFTAR</span>
+          </div>
+          <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:13px 22px;background:#FAEDE4">
+            <span style="font-family:var(--num-font);font-size:13px;color:#C25A36">22</span>
+            <span style="font-size:15px;font-weight:700;color:#22303F">Bugün</span>
+            <span style="font-family:var(--num-font);font-size:15px;font-weight:600;color:#C25A36;text-align:right">03:59</span>
+            <span style="font-family:var(--num-font);font-size:15px;font-weight:600;color:#C25A36;text-align:right">20:45</span>
+          </div>
+          <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:13px 22px">
+            <span style="font-family:var(--num-font);font-size:13px;color:#A9B1BC">23</span>
+            <span style="font-size:15px;font-weight:500;color:#3B4756">Yarın</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">04:00</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">20:45</span>
+          </div>
+          <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:13px 22px">
+            <span style="font-family:var(--num-font);font-size:13px;color:#A9B1BC">24</span>
+            <span style="font-size:15px;font-weight:500;color:#3B4756">Perşembe</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">04:01</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">20:45</span>
+          </div>
+          <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:13px 22px">
+            <span style="font-family:var(--num-font);font-size:13px;color:#A9B1BC">25</span>
+            <span style="font-size:15px;font-weight:500;color:#3B4756">Cuma</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">04:02</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">20:44</span>
+          </div>
+          <div style="display:grid;grid-template-columns:40px 1fr 76px 76px;align-items:baseline;padding:13px 22px">
+            <span style="font-family:var(--num-font);font-size:13px;color:#A9B1BC">26</span>
+            <span style="font-size:15px;font-weight:500;color:#3B4756">Cumartesi</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">04:03</span>
+            <span style="font-family:var(--num-font);font-size:15px;color:#3B4756;text-align:right">20:44</span>
+          </div>
+        </div>
+
+        <div style="margin-top:auto;display:flex;border-top:1px solid #EBE5D9;background:#FCFAF5;padding:10px 12px 0">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#C25A36">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 119.5 4 7 7 0 0020 14.5z"></path></svg>
+            <span style="font-size:11px;font-weight:700">İmsakiye</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#A9B1BC">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"></circle><path d="M12 7.5V12l3 1.8"></path></svg>
+            <span style="font-size:11px;font-weight:600">Vakitler</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#A9B1BC">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.4" fill="#F7F4EF"></circle><circle cx="15" cy="16" r="2.4" fill="#F7F4EF"></circle></svg>
+            <span style="font-size:11px;font-weight:600">Ayarlar</span>
+          </div>
+        </div>
+        <div style="width:112px;height:4px;border-radius:2px;background:#22303F;opacity:.22;margin:8px auto 10px;flex:none"></div>
+      </div>
+    </div>
+
+    <!-- ============ 1b — NAMAZ VAKİTLERİ ============ -->
+    <div class="dv-opt" id="1b">
+      <div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Namaz Vakitleri — sıradaki vakit vurgusu</div>
+      <div data-screen-label="Namaz Vakitleri" style="width:412px;height:900px;background:#F7F4EF;border-radius:32px;border:1px solid #E3DDD1;box-shadow:0 16px 40px rgba(34,48,63,.12);display:flex;flex-direction:column;overflow:hidden;color:#22303F;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 26px 0;font-family:var(--num-font);font-size:13px;font-weight:500">
+          <span>14:46</span>
+          <span style="display:flex;align-items:center;gap:5px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"></path></svg>
+            <svg width="20" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="20" height="11" rx="3" stroke="#22303F" stroke-width="1.5"></rect><rect x="3" y="3" width="12" height="7" rx="1.5" fill="#22303F"></rect><rect x="23" y="4" width="2.4" height="5" rx="1.2" fill="#22303F"></rect></svg>
+          </span>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:22px 26px 0">
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <div style="font-size:22px;font-weight:800;letter-spacing:-.01em">Namaz Vakitleri</div>
+            <sc-if value="{{ showHijri }}" hint-placeholder-val="{{ true }}">
+              <div style="font-size:12.5px;color:#98A1AE">7 Temmuz 2026 · 22 Muharrem 1448</div>
+            </sc-if>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;background:#FFFFFF;border:1px solid #E3DDD1;border-radius:100px;padding:8px 14px;font-size:13px;font-weight:600">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C25A36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.4-6.5-10.2A6.5 6.5 0 0112 4.3a6.5 6.5 0 016.5 6.5C18.5 15.6 12 21 12 21z"></path><circle cx="12" cy="10.8" r="2.2"></circle></svg>
+            İzmir
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px;padding:22px 26px 6px">
+          <div style="padding:9px 16px;border-radius:100px;background:transparent;border:1px solid #E3DDD1;font-size:13px;font-weight:600;color:#98A1AE">Dün</div>
+          <div style="padding:9px 16px;border-radius:100px;background:#22303F;border:1px solid #22303F;font-size:13px;font-weight:700;color:#F7F4EF">Bugün</div>
+          <div style="padding:9px 16px;border-radius:100px;background:#FFFFFF;border:1px solid #E3DDD1;font-size:13px;font-weight:600;color:#3B4756">Yarın</div>
+          <div style="padding:9px 16px;border-radius:100px;background:#FFFFFF;border:1px solid #E3DDD1;font-size:13px;font-weight:600;color:#3B4756">9 Per</div>
+          <div style="padding:9px 16px;border-radius:100px;background:#FFFFFF;border:1px solid #E3DDD1;font-size:13px;font-weight:600;color:#3B4756">10 Cum</div>
+        </div>
+
+        <div style="margin:14px 20px 0;background:#FFFFFF;border:1px solid #EBE5D9;border-radius:22px;overflow:hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:15px 22px;opacity:.42">
+            <span style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#68727F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+              İmsak
+            </span>
+            <span style="font-family:var(--num-font);font-size:16px">03:59</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:15px 22px;opacity:.42">
+            <span style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#68727F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+              Güneş
+            </span>
+            <span style="font-family:var(--num-font);font-size:16px">05:47</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:15px 22px;opacity:.42">
+            <span style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#68727F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+              Öğle
+            </span>
+            <span style="font-family:var(--num-font);font-size:16px">13:21</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:17px 22px;background:#FAEDE4">
+            <span style="display:flex;flex-direction:column;gap:3px">
+              <span style="font-size:16px;font-weight:700;color:#22303F">İkindi</span>
+              <span style="font-size:11.5px;font-weight:600;color:#C25A36">Sıradaki · 2 sa 29 dk kaldı</span>
+            </span>
+            <span style="font-family:var(--num-font);font-size:20px;font-weight:600;color:#C25A36">17:15</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:15px 22px">
+            <span style="font-size:15px;font-weight:600;color:#3B4756">Akşam <span style="font-size:11.5px;font-weight:600;color:#98A1AE;margin-left:6px">İftar</span></span>
+            <span style="font-family:var(--num-font);font-size:16px;color:#3B4756">20:45</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:15px 22px">
+            <span style="font-size:15px;font-weight:600;color:#3B4756">Yatsı</span>
+            <span style="font-family:var(--num-font);font-size:16px;color:#3B4756">22:25</span>
+          </div>
+        </div>
+
+        <div style="padding:14px 26px 0;font-size:11.5px;color:#A9B1BC">Diyanet takvimi · İzmir merkez</div>
+
+        <div style="margin-top:auto;display:flex;border-top:1px solid #EBE5D9;background:#FCFAF5;padding:10px 12px 0">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#A9B1BC">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 119.5 4 7 7 0 0020 14.5z"></path></svg>
+            <span style="font-size:11px;font-weight:600">İmsakiye</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#C25A36">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"></circle><path d="M12 7.5V12l3 1.8"></path></svg>
+            <span style="font-size:11px;font-weight:700">Vakitler</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#A9B1BC">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.4" fill="#F7F4EF"></circle><circle cx="15" cy="16" r="2.4" fill="#F7F4EF"></circle></svg>
+            <span style="font-size:11px;font-weight:600">Ayarlar</span>
+          </div>
+        </div>
+        <div style="width:112px;height:4px;border-radius:2px;background:#22303F;opacity:.22;margin:8px auto 10px;flex:none"></div>
+      </div>
+    </div>
+
+    <!-- ============ 1c — AYARLAR ============ -->
+    <div class="dv-opt" id="1c">
+      <div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Ayarlar — gruplu kartlar, stepper</div>
+      <div data-screen-label="Ayarlar" style="width:412px;height:900px;background:#F7F4EF;border-radius:32px;border:1px solid #E3DDD1;box-shadow:0 16px 40px rgba(34,48,63,.12);display:flex;flex-direction:column;overflow:hidden;color:#22303F;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 26px 0;font-family:var(--num-font);font-size:13px;font-weight:500">
+          <span>14:46</span>
+          <span style="display:flex;align-items:center;gap:5px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01"></path></svg>
+            <svg width="20" height="11" viewBox="0 0 26 13" fill="none"><rect x="1" y="1" width="20" height="11" rx="3" stroke="#22303F" stroke-width="1.5"></rect><rect x="3" y="3" width="12" height="7" rx="1.5" fill="#22303F"></rect><rect x="23" y="4" width="2.4" height="5" rx="1.2" fill="#22303F"></rect></svg>
+          </span>
+        </div>
+
+        <div style="padding:22px 26px 0">
+          <div style="font-size:22px;font-weight:800;letter-spacing:-.01em">Ayarlar</div>
+        </div>
+
+        <div style="padding:24px 20px 0;display:flex;flex-direction:column;gap:22px">
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#A9B1BC;padding:0 6px">KONUM</div>
+            <div style="background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;min-height:24px">
+                <span style="font-size:15px;font-weight:600">Şehir</span>
+                <span style="display:flex;align-items:center;gap:8px;font-size:15px;color:#68727F">
+                  İzmir
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A9B1BC" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"></path></svg>
+                </span>
+              </div>
+              <div style="height:1px;background:#F0EBE1;margin:0 20px"></div>
+              <div style="display:flex;align-items:center;gap:10px;padding:16px 20px;color:#C25A36;font-size:14.5px;font-weight:700">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="6.5"></circle><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"></circle><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"></path></svg>
+                Konumu kullan
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#A9B1BC;padding:0 6px">BİLDİRİMLER</div>
+            <div style="background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;overflow:hidden">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px">
+                <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                  <span style="font-size:15px;font-weight:600">Hatırlatma</span>
+                  <span style="font-size:12px;color:#98A1AE">İftar ve imsaktan önce</span>
+                </span>
+                <span style="display:flex;align-items:center;border:1px solid #E3DDD1;border-radius:100px;flex:none">
+                  <span style="width:36px;height:34px;display:flex;align-items:center;justify-content:center;color:#68727F;font-size:17px;font-weight:600">−</span>
+                  <span style="min-width:52px;text-align:center;font-family:var(--num-font);font-size:13px;font-weight:600">1 sa</span>
+                  <span style="width:36px;height:34px;display:flex;align-items:center;justify-content:center;color:#C25A36;font-size:17px;font-weight:600">+</span>
+                </span>
+              </div>
+              <div style="height:1px;background:#F0EBE1;margin:0 20px"></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px">
+                <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                  <span style="font-size:15px;font-weight:600">Geri sayım</span>
+                  <span style="font-size:12px;color:#98A1AE">Bildirimde canlı sayaç</span>
+                </span>
+                <span style="display:flex;align-items:center;border:1px solid #E3DDD1;border-radius:100px;flex:none">
+                  <span style="width:36px;height:34px;display:flex;align-items:center;justify-content:center;color:#68727F;font-size:17px;font-weight:600">−</span>
+                  <span style="min-width:52px;text-align:center;font-family:var(--num-font);font-size:13px;font-weight:600">5 dk</span>
+                  <span style="width:36px;height:34px;display:flex;align-items:center;justify-content:center;color:#C25A36;font-size:17px;font-weight:600">+</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.16em;color:#A9B1BC;padding:0 6px">GÖRÜNÜM</div>
+            <div style="background:#FFFFFF;border:1px solid #EBE5D9;border-radius:20px;padding:14px 16px">
+              <div style="display:flex;background:#F0EBE1;border-radius:100px;padding:4px">
+                <div style="flex:1;text-align:center;padding:9px 0;border-radius:100px;background:#FFFFFF;box-shadow:0 2px 6px rgba(34,48,63,.10);font-size:13px;font-weight:700;color:#22303F">Gündüz</div>
+                <div style="flex:1;text-align:center;padding:9px 0;border-radius:100px;font-size:13px;font-weight:600;color:#98A1AE">Gece</div>
+                <div style="flex:1;text-align:center;padding:9px 0;border-radius:100px;font-size:13px;font-weight:600;color:#98A1AE">Otomatik</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:auto;text-align:center;font-size:11px;color:#B6BDC7;padding-bottom:14px">v1.1.1 · Kaan Dönmez</div>
+
+        <div style="display:flex;border-top:1px solid #EBE5D9;background:#FCFAF5;padding:10px 12px 0">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#A9B1BC">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 119.5 4 7 7 0 0020 14.5z"></path></svg>
+            <span style="font-size:11px;font-weight:600">İmsakiye</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#A9B1BC">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.2"></circle><path d="M12 7.5V12l3 1.8"></path></svg>
+            <span style="font-size:11px;font-weight:600">Vakitler</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;color:#C25A36">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.4" fill="#F7F4EF"></circle><circle cx="15" cy="16" r="2.4" fill="#F7F4EF"></circle></svg>
+            <span style="font-size:11px;font-weight:700">Ayarlar</span>
+          </div>
+        </div>
+        <div style="width:112px;height:4px;border-radius:2px;background:#22303F;opacity:.22;margin:8px auto 10px;flex:none"></div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">Sonraki adım örnekleri: "<a class="dv-oid" href="#1a">1a</a>'daki geri sayımı kart içine al" · "gece temasını da tasarla" · "illüstrasyonlu başlığı geri getir ama minimal yorumla"</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1480, &quot;height&quot;: 1080 },
+  &quot;uiFont&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;Schibsted Grotesk&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;Schibsted Grotesk&quot;, &quot;Nunito&quot;, &quot;Quicksand&quot;, &quot;Baloo 2&quot;], &quot;section&quot;: &quot;Tipografi&quot; },
+  &quot;numFont&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;Azeret Mono&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;Azeret Mono&quot;, &quot;Sono&quot;, &quot;Space Mono&quot;, &quot;Nunito&quot;], &quot;section&quot;: &quot;Tipografi&quot; },
+  &quot;liveCountdown&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Davranış&quot; },
+  &quot;showHijri&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;İçerik&quot; }
+}">
+class Component extends DCLogic {
+  state = { now: new Date() };
+  componentDidMount() {
+    this.t = setInterval(() => this.setState({ now: new Date() }), 1000);
+    this.applyFonts();
+  }
+  componentDidUpdate() { this.applyFonts(); }
+  applyFonts() {
+    const uiStacks = {
+      'Schibsted Grotesk': "'Schibsted Grotesk',system-ui,sans-serif",
+      'Nunito': "'Nunito',system-ui,sans-serif",
+      'Quicksand': "'Quicksand',system-ui,sans-serif",
+      'Baloo 2': "'Baloo 2',system-ui,sans-serif",
+    };
+    const numStacks = {
+      'Azeret Mono': "'Azeret Mono',monospace",
+      'Sono': "'Sono',monospace",
+      'Space Mono': "'Space Mono',monospace",
+      'Nunito': "'Nunito',system-ui,sans-serif",
+    };
+    const root = document.documentElement.style;
+    root.setProperty('--ui-font', uiStacks[this.props.uiFont ?? 'Schibsted Grotesk'] || uiStacks['Schibsted Grotesk']);
+    root.setProperty('--num-font', numStacks[this.props.numFont ?? 'Azeret Mono'] || numStacks['Azeret Mono']);
+  }
+  componentWillUnmount() { clearInterval(this.t); }
+  renderVals() {
+    const live = this.props.liveCountdown ?? true;
+    let countdown = '05:58:51';
+    let countLabel = 'İFTARA KALAN';
+    if (live) {
+      const now = this.state.now;
+      const iftar = new Date(now); iftar.setHours(20, 45, 0, 0);
+      let target = iftar;
+      if (now >= iftar) {
+        target = new Date(now);
+        target.setDate(target.getDate() + 1);
+        target.setHours(4, 0, 0, 0);
+        countLabel = 'İMSAKA KALAN';
+      }
+      const d = Math.max(0, target - now);
+      const p = n => String(n).padStart(2, '0');
+      countdown = p(Math.floor(d / 3600000)) + ':' + p(Math.floor(d / 60000) % 60) + ':' + p(Math.floor(d / 1000) % 60);
+    }
+    const imsakRows = [
+      { h: '24', label: '9 Perşembe',  imsak: '04:01', iftar: '20:45' },
+      { h: '25', label: '10 Cuma',      imsak: '04:02', iftar: '20:44' },
+      { h: '26', label: '11 Cumartesi', imsak: '04:03', iftar: '20:44' },
+      { h: '27', label: '12 Pazar',     imsak: '04:04', iftar: '20:44' },
+      { h: '28', label: '13 Pazartesi', imsak: '04:05', iftar: '20:43' },
+      { h: '29', label: '14 Salı',      imsak: '04:06', iftar: '20:43' },
+      { h: '1',  label: '15 Çarşamba',  imsak: '04:08', iftar: '20:42' },
+      { h: '2',  label: '16 Perşembe',  imsak: '04:09', iftar: '20:41' },
+      { h: '3',  label: '17 Cuma',      imsak: '04:10', iftar: '20:41' },
+      { h: '4',  label: '18 Cumartesi', imsak: '04:11', iftar: '20:40' },
+      { h: '5',  label: '19 Pazar',     imsak: '04:12', iftar: '20:39' },
+      { h: '6',  label: '20 Pazartesi', imsak: '04:13', iftar: '20:38' },
+    ];
+    const namazDays = [
+      { date: '9 Temmuz, Perşembe',   hijri: '24 Muharrem', times: [{n:'İmsak',t:'04:01'},{n:'Güneş',t:'05:49'},{n:'Öğle',t:'13:22'},{n:'İkindi',t:'17:15'},{n:'Akşam',t:'20:45'},{n:'Yatsı',t:'22:24'}] },
+      { date: '10 Temmuz, Cuma',      hijri: '25 Muharrem', times: [{n:'İmsak',t:'04:02'},{n:'Güneş',t:'05:49'},{n:'Öğle',t:'13:22'},{n:'İkindi',t:'17:15'},{n:'Akşam',t:'20:44'},{n:'Yatsı',t:'22:24'}] },
+      { date: '11 Temmuz, Cumartesi', hijri: '26 Muharrem', times: [{n:'İmsak',t:'04:03'},{n:'Güneş',t:'05:50'},{n:'Öğle',t:'13:22'},{n:'İkindi',t:'17:15'},{n:'Akşam',t:'20:44'},{n:'Yatsı',t:'22:23'}] },
+      { date: '12 Temmuz, Pazar',     hijri: '27 Muharrem', times: [{n:'İmsak',t:'04:04'},{n:'Güneş',t:'05:51'},{n:'Öğle',t:'13:22'},{n:'İkindi',t:'17:16'},{n:'Akşam',t:'20:44'},{n:'Yatsı',t:'22:22'}] },
+      { date: '13 Temmuz, Pazartesi', hijri: '28 Muharrem', times: [{n:'İmsak',t:'04:05'},{n:'Güneş',t:'05:52'},{n:'Öğle',t:'13:23'},{n:'İkindi',t:'17:16'},{n:'Akşam',t:'20:43'},{n:'Yatsı',t:'22:21'}] },
+      { date: '14 Temmuz, Salı',      hijri: '29 Muharrem', times: [{n:'İmsak',t:'04:06'},{n:'Güneş',t:'05:53'},{n:'Öğle',t:'13:23'},{n:'İkindi',t:'17:16'},{n:'Akşam',t:'20:43'},{n:'Yatsı',t:'22:20'}] },
+    ];
+    return {
+      countdown,
+      countLabel,
+      showHijri: this.props.showHijri ?? true,
+      imsakRows,
+      namazDays,
+    };
+  }
+}
+</script>
+</body>
+</html>

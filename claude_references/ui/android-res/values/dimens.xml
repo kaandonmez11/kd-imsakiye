@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KD İmsakiye — spacing / radius / type scale -->
+<resources>
+    <!-- Spacing -->
+    <dimen name="screen_pad_card">20dp</dimen>
+    <dimen name="screen_pad_text">26dp</dimen>
+    <dimen name="card_pad_h">20dp</dimen>
+    <dimen name="card_pad_v">14dp</dimen>
+    <dimen name="cell_gap">8dp</dimen>
+    <dimen name="list_row_pad_v">12dp</dimen>
+
+    <!-- Radius -->
+    <dimen name="radius_card">20dp</dimen>
+    <dimen name="radius_card_lg">22dp</dimen>
+    <dimen name="radius_cell">12dp</dimen>
+    <dimen name="radius_nav_outer">26dp</dimen>
+    <dimen name="radius_nav_active">20dp</dimen>
+    <dimen name="nav_padding">6dp</dimen>
+
+    <!-- Type scale (sp) -->
+    <dimen name="text_countdown">52sp</dimen>
+    <dimen name="text_screen_title">20sp</dimen>
+    <dimen name="text_date_title">17sp</dimen>
+    <dimen name="text_card_title">16sp</dimen>
+    <dimen name="text_row">15sp</dimen>
+    <dimen name="text_time_lg">17sp</dimen>
+    <dimen name="text_time">13sp</dimen>
+    <dimen name="text_label">11sp</dimen>
+    <dimen name="text_label_sm">10sp</dimen>
+    <dimen name="text_caption">12sp</dimen>
+
+    <!-- Misc -->
+    <dimen name="progress_height">4dp</dimen>
+    <dimen name="touch_target_min">44dp</dimen>
+</resources>

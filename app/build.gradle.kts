@@ -55,6 +55,3 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
-configurations.all {
-    exclude(group = "com.google.guava", module = "listenablefuture")
-}

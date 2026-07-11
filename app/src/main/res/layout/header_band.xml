@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tüm sekmelerin paylaştığı sabit header: tab geçişlerinde fade'e girmez -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/header_band"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/header_band"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/header_pin"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_pin" />
+
+        <TextView
+            android:id="@+id/header_city_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:includeFontPadding="false"
+            android:textColor="@color/ink"
+            android:textFontWeight="700"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:importantForAccessibility="no"
+        android:scaleType="fitXY"
+        android:src="@drawable/header_illo" />
+</LinearLayout>

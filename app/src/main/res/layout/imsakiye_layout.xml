@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Tarih satiri -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/screen_pad_text"
+        android:paddingTop="18dp"
+        android:paddingEnd="@dimen/screen_pad_text">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/imsakiye_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ink"
+                android:textFontWeight="700"
+                android:textSize="@dimen/text_date_title" />
+
+            <TextView
+                android:id="@+id/imsakiye_hijri_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/muted_label"
+                android:textSize="12.5sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/diyanet_calendar"
+            android:textColor="@color/muted_label"
+            android:textFontWeight="600"
+            android:textSize="12.5sp" />
+    </LinearLayout>
+
+    <!-- Geri sayim blogu -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/screen_pad_text"
+        android:paddingTop="18dp"
+        android:paddingEnd="@dimen/screen_pad_text"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/countdown_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.2"
+            android:textColor="@color/muted_label"
+            android:textFontWeight="700"
+            android:textSize="@dimen/text_label" />
+
+        <TextView
+            android:id="@+id/countdown_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:fontFamily="@font/azeret_mono"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:textColor="@color/ink"
+            android:textFontWeight="300"
+            android:textSize="@dimen/text_countdown" />
+
+        <com.kdgames.imsakiye.GlowProgressBar
+            android:id="@+id/countdown_progress"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_marginTop="9dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/imsak_label"
+                android:textColor="@color/muted_label"
+                android:textSize="12.5sp" />
+
+            <TextView
+                android:id="@+id/countdown_imsak_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/azeret_mono"
+                android:textColor="@color/muted"
+                android:textFontWeight="500"
+                android:textSize="12.5sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/iftar_label"
+                android:textColor="@color/muted_label"
+                android:textSize="12.5sp" />
+
+            <TextView
+                android:id="@+id/countdown_iftar_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/azeret_mono"
+                android:textColor="@color/accent"
+                android:textFontWeight="600"
+                android:textSize="12.5sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Gun tablosu karti: baslik sabit, gunler scroll -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/screen_pad_card"
+        android:layout_marginEnd="@dimen/screen_pad_card"
+        android:layout_weight="1"
+        android:background="@drawable/bg_card"
+        android:clipToOutline="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="22dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="22dp"
+            android:paddingBottom="9dp">
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:letterSpacing="0.06"
+                android:text="@string/day_header"
+                android:textColor="@color/muted_faint"
+                android:textFontWeight="600"
+                android:textSize="@dimen/text_label" />
+
+            <TextView
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:letterSpacing="0.06"
+                android:text="@string/imsak_header"
+                android:textColor="@color/muted_faint"
+                android:textFontWeight="600"
+                android:textSize="@dimen/text_label" />
+
+            <TextView
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:letterSpacing="0.06"
+                android:text="@string/iftar_header"
+                android:textColor="@color/muted_faint"
+                android:textFontWeight="600"
+                android:textSize="@dimen/text_label" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fadingEdgeLength="56dp"
+            android:overScrollMode="never"
+            android:requiresFadingEdge="vertical"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/imsakiye_day_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

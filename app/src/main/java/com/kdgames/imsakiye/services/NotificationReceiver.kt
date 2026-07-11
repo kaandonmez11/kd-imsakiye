@@ -27,9 +27,10 @@ class NotificationReceiver : BroadcastReceiver() {
         val notificationManager =
             applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        val channelId = "ramadan_channel_$soundName"
-
-        val soundUri = "android.resource://${applicationContext.packageName}/raw/$soundName".toUri()
+        // Boş ses adı geçersiz URI'li (sessiz) kanal yaratıyordu;
+        // ses belirtilmemişse varsayılan bildirim sesli kanal kullanılır
+        val hasCustomSound = soundName.isNotBlank()
+        val channelId = if (hasCustomSound) "ramadan_channel_$soundName" else "ramadan_channel_default"
 
         val intent = Intent(applicationContext, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -42,18 +43,20 @@ class NotificationReceiver : BroadcastReceiver() {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        val audioAttributes = AudioAttributes.Builder()
-            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-            .setUsage(AudioAttributes.USAGE_NOTIFICATION)
-            .build()
-
         val channel = NotificationChannel(
             channelId,
             "Worship Reminders",
             NotificationManager.IMPORTANCE_HIGH
         ).apply {
             description = "Prayer and time reminders"
-            setSound(soundUri, audioAttributes)
+            if (hasCustomSound) {
+                val soundUri = "android.resource://${applicationContext.packageName}/raw/$soundName".toUri()
+                val audioAttributes = AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                    .build()
+                setSound(soundUri, audioAttributes)
+            }
         }
 
         notificationManager.createNotificationChannel(channel)
@@ -65,7 +68,6 @@ class NotificationReceiver : BroadcastReceiver() {
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
-            .setSound(soundUri)
 
         notificationManager.notify(System.currentTimeMillis().toInt(), builder.build())
     }

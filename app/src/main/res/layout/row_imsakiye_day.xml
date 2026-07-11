@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="true"
+    android:orientation="horizontal"
+    android:paddingStart="22dp"
+    android:paddingTop="@dimen/list_row_pad_v"
+    android:paddingEnd="22dp"
+    android:paddingBottom="@dimen/list_row_pad_v">
+
+    <TextView
+        android:id="@+id/row_hijri_num"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/azeret_mono"
+        android:textColor="@color/muted_faint"
+        android:textSize="@dimen/text_time" />
+
+    <TextView
+        android:id="@+id/row_day_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/ink_secondary"
+        android:textFontWeight="500"
+        android:textSize="@dimen/text_row" />
+
+    <TextView
+        android:id="@+id/row_imsak_time"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/azeret_mono"
+        android:gravity="end"
+        android:textColor="@color/ink_secondary"
+        android:textSize="@dimen/text_row" />
+
+    <TextView
+        android:id="@+id/row_iftar_time"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/azeret_mono"
+        android:gravity="end"
+        android:textColor="@color/ink_secondary"
+        android:textSize="@dimen/text_row" />
+</LinearLayout>

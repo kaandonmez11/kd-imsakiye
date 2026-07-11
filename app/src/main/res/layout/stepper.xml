@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_stepper"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/stepper_minus"
+        android:layout_width="@dimen/touch_target_min"
+        android:layout_height="@dimen/touch_target_min"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="@string/stepper_minus"
+        android:textColor="@color/muted"
+        android:textFontWeight="600"
+        android:textSize="16sp" />
+
+    <!-- Tıklanınca sayısal klavyeyle doğrudan değer girilebilir;
+         inputType odaklanınca kodda number yapılır (suffix'li gösterim filtrelenmesin) -->
+    <EditText
+        android:id="@+id/stepper_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:fontFamily="@font/azeret_mono"
+        android:gravity="center"
+        android:imeOptions="actionDone"
+        android:importantForAutofill="no"
+        android:includeFontPadding="false"
+        android:inputType="none"
+        android:minWidth="46dp"
+        android:padding="0dp"
+        android:singleLine="true"
+        android:textColor="@color/ink"
+        android:textFontWeight="600"
+        android:textSize="12.5sp" />
+
+    <TextView
+        android:id="@+id/stepper_plus"
+        android:layout_width="@dimen/touch_target_min"
+        android:layout_height="@dimen/touch_target_min"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="@string/stepper_plus"
+        android:textColor="@color/accent"
+        android:textFontWeight="600"
+        android:textSize="16sp" />
+</LinearLayout>

@@ -13,6 +13,10 @@ import com.kdgames.imsakiye.R
 
 class LiveNotificationService : Service() {
 
+    companion object {
+        const val ACTION_STOP = "com.kdgames.imsakiye.action.STOP_LIVE_COUNTDOWN"
+    }
+
     private var countDownTimer: CountDownTimer? = null
     private lateinit var notificationManager: NotificationManager
 
@@ -26,6 +30,15 @@ class LiveNotificationService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        // Kullanıcı bildirimi kaydırıp kapattıysa sayaç da dursun;
+        // yoksa her saniyelik notify() bildirimi geri getirir
+        if (intent?.action == ACTION_STOP) {
+            countDownTimer?.cancel()
+            stopForeground(STOP_FOREGROUND_REMOVE)
+            stopSelf()
+            return START_NOT_STICKY
+        }
+
         Log.d("TEST_LOG", "Service started")
         val title = intent?.getStringExtra("title") ?: "Geri Sayım"
         val targetMillis = intent?.getLongExtra("targetMillis", 0L) ?: 0L
@@ -61,6 +74,16 @@ class LiveNotificationService : Service() {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
+        val stopIntent = Intent(this, LiveNotificationService::class.java).apply {
+            action = ACTION_STOP
+        }
+        val stopPendingIntent = PendingIntent.getService(
+            this,
+            1,
+            stopIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
         val builder = NotificationCompat.Builder(this, channelId)
             .setContentTitle(title)
             .setContentText(contentText)
@@ -70,6 +93,7 @@ class LiveNotificationService : Service() {
             .setCategory(NotificationCompat.CATEGORY_PROGRESS)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setContentIntent(pendingIntent)
+            .setDeleteIntent(stopPendingIntent)
 
         if (max > 0) {
             builder.setProgress(max, progress, false)
@@ -78,9 +102,14 @@ class LiveNotificationService : Service() {
         if (Build.VERSION.SDK_INT >= 35) {
             builder.setRequestPromotedOngoing(true)
 
-            val minutes = progress / 60
+            val hours = progress / 3600
+            val minutes = (progress % 3600) / 60
             val seconds = progress % 60
-            val chipText = if (minutes > 0) "${minutes}dk" else "${seconds}sn"
+            val chipText = when {
+                hours > 0 -> "${hours}sa ${minutes}dk"
+                minutes > 0 -> "${minutes}dk"
+                else -> "${seconds}sn"
+            }
             builder.setShortCriticalText(chipText)
         } else {
             builder.addExtras(android.os.Bundle().apply {
@@ -99,9 +128,14 @@ class LiveNotificationService : Service() {
             @SuppressLint("DefaultLocale")
             override fun onTick(millisUntilFinished: Long) {
                 val secondsRemaining = (millisUntilFinished / 1000).toInt()
-                val minutes = secondsRemaining / 60
+                val hours = secondsRemaining / 3600
+                val minutes = (secondsRemaining % 3600) / 60
                 val seconds = secondsRemaining % 60
-                val timeText = String.format("%02d:%02d", minutes, seconds)
+                val timeText = if (hours > 0) {
+                    String.format("%d:%02d:%02d", hours, minutes, seconds)
+                } else {
+                    String.format("%02d:%02d", minutes, seconds)
+                }
 
                 val updatedNotification = createNotificationBuilder(
                     title, 

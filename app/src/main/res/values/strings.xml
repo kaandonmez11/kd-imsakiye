@@ -1,3 +1,49 @@
 <resources>
     <string name="app_name">KD Imsakiye</string>
+
+    <string name="loading">Yükleniyor…</string>
+    <string name="diyanet_calendar">Diyanet takvimi</string>
+    <string name="imsak_label">İmsak</string>
+    <string name="iftar_label">İftar</string>
+    <string name="day_header">GÜN</string>
+    <string name="imsak_header">İMSAK</string>
+    <string name="iftar_header">İFTAR</string>
+    <string name="countdown_to_iftar">İFTARA KALAN</string>
+    <string name="countdown_to_imsak">İMSAKA KALAN</string>
+    <string name="day_yesterday">Dün</string>
+    <string name="day_today">Bugün</string>
+    <string name="day_tomorrow">Yarın</string>
+
+    <string name="vakitler_title">Namaz Vakitleri</string>
+    <string name="vakit_gunes">Güneş</string>
+    <string name="vakit_ogle">Öğle</string>
+    <string name="vakit_ikindi">İkindi</string>
+    <string name="vakit_aksam">Akşam</string>
+    <string name="vakit_yatsi">Yatsı</string>
+    <string name="badge_yesterday">DÜN</string>
+    <string name="badge_today">BUGÜN</string>
+    <string name="badge_tomorrow">YARIN</string>
+
+    <string name="ayarlar_title">Ayarlar</string>
+    <string name="group_konum">KONUM</string>
+    <string name="group_bildirimler">BİLDİRİMLER</string>
+    <string name="group_gorunum">GÖRÜNÜM</string>
+    <string name="city_label">Şehir</string>
+    <string name="use_location">Konumu kullan</string>
+    <string name="use_location_active">Güncel konum kullanılıyor</string>
+    <string name="reminder_title">Hatırlatma</string>
+    <string name="reminder_subtitle">İftar ve imsaktan önce</string>
+    <string name="countdown_title">Geri sayım</string>
+    <string name="countdown_subtitle">Bildirimde canlı sayaç</string>
+    <string name="before_suffix">önce</string>
+    <string name="seg_gunduz">Gündüz</string>
+    <string name="seg_gece">Gece</string>
+    <string name="seg_otomatik">Otomatik</string>
+    <string name="stepper_minus">−</string>
+    <string name="stepper_plus">+</string>
+    <string name="city_dialog_title">Şehir seç</string>
+
+    <string name="tab_imsakiye">İmsakiye</string>
+    <string name="tab_vakitler">Vakitler</string>
+    <string name="tab_ayarlar">Ayarlar</string>
 </resources>
